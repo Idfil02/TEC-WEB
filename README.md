@@ -15,7 +15,7 @@ Per creare il db per il sito:
     - tabella: users
     - colonne: 5
 3. Definire le colonne 
-    - NOMI: id, user_id, user_name, password
+    - NOMI: id, user_id, user_name, password, date
         - id è l’id del server mentre user_id è l’id che diamo noi alla creazione
     - TIPI: bigint, bigint, varchar, varchar, timestamp
     - LUNGHEZZA/VALORI: i varchar a 20 il resto vuoto
