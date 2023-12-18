@@ -3,7 +3,7 @@
 $dbhost = "localhost";
 $dbuser = "root";
 $dbpass = "";
-$dbname = "sample_db";
+$dbname = "logi_sample_db";
 if (!$con = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname)){
     die("failed to connect");
 }
