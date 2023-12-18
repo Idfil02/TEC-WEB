@@ -23,3 +23,4 @@ Per creare il db per il sito:
     - salvare
         - Ora vi dovrebbe portare nella sezione struttura della tabella se no cliccate la tabella e poi in alto struttura
 4. Selezionare “più” a destra delle colonne della struttura e poi index in modo da creare un indice per quel valore per user_id user_name password e date
+5. Creare una cartella dentro al path C:\xampp\htdocs (io l'ho chiamata login) e copiare dentro i files
