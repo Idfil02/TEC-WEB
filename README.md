@@ -23,3 +23,10 @@ Per creare il db per il sito:
     - salvare
         - Ora vi dovrebbe portare nella sezione struttura della tabella se no cliccate la tabella e poi in alto struttura
 4. Selezionare “più” a destra delle colonne della struttura e poi index in modo da creare un indice per quel valore per user_id user_name password e date
+
+   ##Idee di design
+
+   Per ora i colori scelti sono
+    --back: #121212;        (background)
+    --primary: #bb86fc;     (colore primario)
+    --secondary: #03dac5;   (colore secondario)
