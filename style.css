@@ -1,0 +1,41 @@
+:root {
+  --back: #121212;
+  --primary: #bb86fc;
+  --secondary: #03dac5;
+  /* 
+Per tutti i colori si devono rispettare gli standard di contrasto
+https://webaim.org/resources/contrastchecker/
+  */
+}
+/* Dimensioni non in px
+vw = viewport width
+vh = viewport height
+
+em = font size of parent
+rem = font size of root element
+*/
+html {
+  font-size: 100%;
+  font-family: sans-serif;
+  line-height: 1.5em;
+  margin: auto;
+  background-color: var(--back);
+}
+
+body {
+  /* display: flex; */
+  min-height: 100vh;
+}
+
+.text-button {
+  text-align: center;
+  color: black;
+  background-color: var(--secondary);
+  border-radius: 18px;
+  padding: 10px;
+}
+
+.icon-button {
+  border: 0;
+  background-color: transparent;
+}
