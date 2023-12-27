@@ -1,5 +1,14 @@
 # TEC-WEB
 
+## Git in VS Code Setup
+Per fare i commit e i push del codice che produrrete direttamente da vs code dovete scaricare git per windows da 
+https://gitforwindows.org/ dopodichè aggiungere l'estensione di git a vs code.
+Ora nella activity bar di sinistra ci dovrebbe essere un nuovo simbolo chiamato source control a cui si può accedere
+anche premendo CTRL+SHIFT+G.
+Adesso nelle schermata di welcome di vs cì sara una nuova scelta oltra a new file open file ecc... cioè clone git repository.
+Premetale e nella barra sopra copiate il link della repo qullo che la repo vi da se premete sul tasto code verde facendo questo copierete la repo sul vostr pc.
+Ora nella cartella creata troverete i file della repo all'interno che potete modificare in questa cartella adesso potete nache creare nuovi file ed utilizzando il source control dovreste poter fare add commit e push sulla repo
+
 ## Server Setup
 
 Per testare con un server a casa dovete scaricare [xampp](https://www.apachefriends.org/) lasciandogli installare tutto
