@@ -36,3 +36,27 @@ Per creare il db per il sito:
     Nome del sito: Quackwiz
 
     16 Domande a scelta multipla
+
+
+## Creare pagina php
+Dovete creare un file "nome_pagina.php" al cui interno copiate questo codice e modificate le variabili come scritto. Praticamente qui dò tutti i parametri alla funzione buildPage che crea la vostra pagina.
+```
+<?php 
+    require_once "strumenti.php";       //vedete il vostro path
+
+    $template = file_get_contents('template_layout.html');          //vedete il vostro path
+    $main_content = file_get_contents('la_mia_pagina.html');        // modificare con il path della propria pagina in html
+
+    $title = "QuackWiz";         //modificare con il proprio titolo della pagina
+    $pageID = "Home";           //modificare con l'id della pagina (è praticamente l'id del body)
+    $keywords = "xd";        //modificare con delle parole chiave per SEO
+    $description = "lmao";      //modificare con una breve descrizione della pagina
+
+    $page = buildPage($template, $main_content, $title, $pageID, $keywords, $description);
+    echo $page;         //mostra la pagina creata
+?>
+```
+Per poter far funzionare la funzione buildPage vi servono poi i file **strumenti.php** e **template_layout.html** che trovate nel branch jessica :). Praticamente il primo contiene la definizione della funzione buildPage e il secondo è il layout base di tutte le pagine, nel quale dovete linkare il vostro css.
+Ricordatevi, inoltre, che sull'html della vostra pagina non serve mettere nessun tag <html>, <head>, <body> etc.; semplicemente scrivete solo quello che mettereste dentro il body.
+
+**Attenzione!** Per header e footer, siccome sono presenti in tutte le pagine non serve fare la pagina .php, però dovete modificare **strumenti.php** inserendo il vostro path di header e footer.
