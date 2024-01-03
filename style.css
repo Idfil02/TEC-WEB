@@ -20,8 +20,10 @@ html {
   line-height: 1.5em;
   margin: auto;
   background-color: var(--back);
+  
 }
 
+/*aggiungere impostazioni alla sidebar se utente loggato*/
 body {
   /* display: flex; */
   min-height: 100vh;
@@ -38,4 +40,104 @@ body {
 .icon-button {
   border: 0;
   background-color: transparent;
+}
+
+h1{
+  background-color: var(--back);
+  color: var(--primary);
+  text-align: center;
+  font-size: 3em;
+font-style: normal;
+line-height: normal;
+font-weight: 300;
+margin-bottom: 3em;
+
+}
+
+.login {
+  width: 100%;
+  max-width: 25em;
+  margin: auto;
+  margin-bottom: 8em;
+  justify-content: center;
+  align-items: center;
+
+}
+.signup {
+  width: 100%;
+  max-width: 25em;
+  margin: auto;
+  margin-bottom: 13em;
+  justify-content: center;
+  align-items: center;
+}
+
+h2 {
+ 
+  color: var(--primary, #BB86FC);
+text-align: center;
+font-style: normal;
+font-size: 2em;
+line-height: normal;
+font-weight: 200;
+margin-bottom: 2em;
+}
+
+form {
+  width: 10em;
+  height: 8em; 
+  margin: auto;
+  margin-left: 4em;
+background-color: var(--back);
+justify-content: center;
+align-items: center;
+  
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5em;
+  color: var(--primary);
+
+}
+
+input {
+  display: flex;
+width: 18em;
+padding: 0.5em 0.8em;
+border-radius: 5px;
+border: 1px solid var(--primary, #BB86FC);
+background: var(--back);
+color: var(--secondary);
+margin-bottom: 1em;
+}
+
+::-webkit-input-placeholder{ /* questo code funziona solo per Safari,Chrome,Opera*/
+  color: var(--secondary); 
+}
+
+
+button {
+height: 2em;
+padding: 0.5em 0.9em;
+margin-top:  3em;
+margin-left: 8em;
+border-radius: 5px;
+border: 1px solid var(--primary, #BB86FC);
+background-color: var(--primary);
+color:white;
+}
+
+button:hover {
+  background-color: #991eb5;
+}
+
+p{
+  color: white;
+  margin: auto;
+  text-align: center;
+}
+
+a{
+  color: var(--secondary);
 }

@@ -1,0 +1,5 @@
+tabella utenti : id, username, email, password
+
+tabella quiz:id, nome,descrizione, categoria, numero persone like, numero di volte giocato
+
+tabella domande:domande, risposte, risposta corretta, quiz (chiave esterna)
