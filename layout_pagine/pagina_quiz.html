@@ -1,0 +1,90 @@
+<div id="quiz-container">
+
+    <!-- INFO SUL QUIZ -->
+    <div id="quiz-header">
+        <div class="quiz-title">
+            <div class="quiz-image">            <!-- da spostare link qui dell'immagine in background-->
+                <input type="checkbox" class="heart" id="salva-[quizID]" aria-label="Salva quiz">
+                <label for="salva-[quizID]">
+                    <svg id="heart-icon" class="svg-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                        <path d="M50,25 C35,0,-14,25,20,60 L50,90 L80,60 C114,20,65,0,50,25"></path>
+                    </svg>
+                </label>
+            </div>
+            <div>
+                <h1 class="quiz-name">[quiz-title]</h1>
+                <div class="tags">
+                    <a href=".\index.php" class="tag" aria-label="Vai alla pagina [quiz-categoria]">[quiz-category]</a>            <!-- da cambiare con pagina che mostra tutti quiz categoria -->
+                    <span class="tag">[quiz-tempo] minuti</span>
+                    <span class="tag">[quiz-tot-played] giocatori</span>
+                    <span class="tag">[quiz-tot-saved] cuori</span>
+                </div>
+                <h2 class="quiz-description">[quiz-description]</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- AREA DI GIOCO -->
+    <div id="quiz-area">
+        <div id="quiz-info">
+            <div id="tot-questions-box" class="text-info">
+                <div id="tot-questions-label"><strong>DOMANDE RIMASTE</strong></div>
+                <div id="tot-questions-value">
+                    <div id="n_questions_given">0</div>
+                    <div id="tot-questions">/ [quiz-tot-questions]</div>
+                </div>
+            </div>
+            <div id="on-play-buttons" class="on-play">
+                <div id="pauseBox" class="on-play hidden">
+                    <button id="stop-button" class="icon-text-button change-size" type="button" onclick="stopQuiz();">
+                        <svg id="stop-icon" class="svg-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                            <path fill-rule="evenodd" d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3ZM5 1C2.79086 1 1 2.79086 1 5V19C1 21.2091 2.79086 23 5 23H19C21.2091 23 23 21.2091 23 19V5C23 2.79086 21.2091 1 19 1H5Z"></path>
+                            <path class="resume hidden" d="M16 12L10 16.3301V7.66987L16 12Z"></path>
+                            <path class="pause" d="M9 9H11V15H9V9Z"></path>
+                            <path class="pause" d="M15 15H13V9H15V15Z"></path> 
+                        </svg>
+                        <span id="stop-button-text">Pausa</span>
+                    </button>
+                </div>
+                <div id="giveupBox" class="on-play hidden">
+                    <button id="giveup-button" class="icon-text-button" type="button" onclick="endQuiz();">
+                        <svg class="svg-icon" id="giveup-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                            <path fill-rule="evenodd" d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3ZM5 1C2.79086 1 1 2.79086 1 5V19C1 21.2091 2.79086 23 5 23H19C21.2091 23 23 21.2091 23 19V5C23 2.79086 21.2091 1 19 1H5Z"></path>
+                            <path class="x-symbol" d="M 9 9 l 6 6"></path>
+                            <path class="x-symbol" d="M 15 9 l -6 6"></path>
+                        </svg>
+                        <span id="giveup-button-text">Arrenditi</span>
+                    </button>
+                </div>
+            </div>
+            <div id="time-box" class="text-info">
+                <div id="time-label"> <strong>TIMER</strong> </div>
+                <div id="time-value">[quiz-time]</div>
+            </div>
+        </div>
+        <div id="quiz-content-box">
+            <button id="play-button" class="text-button" type="button" onclick="startQuiz()"> <strong>INIZIA A GIOCARE</strong> </button>
+            <div id="question-box" class="on-play hidden"></div>
+            <div id="answers-box" class="on-play hidden">
+                <button id="answer1" class="text-button" type="button" onclick="checkAnswer(this)"></button>
+                <button id="answer2" class="text-button" type="button" onclick="checkAnswer(this)"></button>
+                <button id="answer3" class="text-button" type="button" onclick="checkAnswer(this)"></button>
+                <button id="answer4" class="text-button" type="button" onclick="checkAnswer(this)"></button>
+            </div>
+        </div>
+        <div id="questions-nav-bar" class="on-play hidden" aria-label="Naviga domande">
+            <div id="prev-question" class="move-questions-bar">
+                <button id="prev-question-button" class="text-button" type="button" onclick="prevQuestion();"> <strong>PREC.</strong> </button>
+            </div>
+            <div id="questions-nav"></div>
+            <div id="next-question" class="move-questions-bar">
+                <button id="next-question-button" class="text-button" type="button" onclick="nextQuestion();"> <strong>SUCC.</strong> </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="script/pagina_quiz.js"></script>
+<noscript>
+    <meta http-equiv="refresh" content="0; url=/">      <!-- al posto di url= path pagina html da visualizzare se non funziona js-->
+</noscript>
