@@ -66,6 +66,6 @@ Dovete creare un file "nome_pagina.php" al cui interno copiate questo codice e m
 ?>
 ```
 Per poter far funzionare la funzione buildPage vi servono poi i file **strumenti.php** e **template_layout.html** che trovate nel branch jessica :). Praticamente il primo contiene la definizione della funzione buildPage e il secondo è il layout base di tutte le pagine, nel quale dovete linkare il vostro css.
-Ricordatevi, inoltre, che sull'html della vostra pagina non serve mettere nessun tag <html>, <head>, <body> etc.; semplicemente scrivete solo quello che mettereste dentro il body.
+Ricordatevi, inoltre, che sull'html della vostra pagina non serve mettere nessun tag `<html>`, `<head>`, `<body>` etc.; semplicemente scrivete solo quello che mettereste dentro il body.
 
 **Attenzione!** Per header e footer, siccome sono presenti in tutte le pagine non serve fare la pagina .php, però dovete modificare **strumenti.php** inserendo il vostro path di header e footer.
