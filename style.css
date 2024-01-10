@@ -24,6 +24,7 @@ html {
 }
 
 /*aggiungere impostazioni alla sidebar se utente loggato*/
+
 body {
   /* display: flex; */
   min-height: 100vh;
@@ -42,7 +43,7 @@ body {
   background-color: transparent;
 }
 
-h1{
+body.account h1{
   background-color: var(--back);
   color: var(--primary);
   text-align: center;
@@ -54,7 +55,7 @@ margin-bottom: 3em;
 
 }
 
-.login {
+div.login {
   width: 100%;
   max-width: 25em;
   margin: auto;
@@ -63,7 +64,7 @@ margin-bottom: 3em;
   align-items: center;
 
 }
-.signup {
+div.signup {
   width: 100%;
   max-width: 25em;
   margin: auto;
@@ -72,9 +73,8 @@ margin-bottom: 3em;
   align-items: center;
 }
 
-h2 {
- 
-  color: var(--primary, #BB86FC);
+body.account h2 {
+color: var(--primary, #BB86FC);
 text-align: center;
 font-style: normal;
 font-size: 2em;
@@ -83,7 +83,7 @@ font-weight: 200;
 margin-bottom: 2em;
 }
 
-form {
+body.account form {
   width: 10em;
   height: 8em; 
   margin: auto;
@@ -94,15 +94,15 @@ align-items: center;
   
 }
 
-label {
+body.account form label {
   display: block;
   margin-bottom: 0.5em;
   color: var(--primary);
 
 }
 
-input {
-  display: flex;
+body.account form input {
+display: flex;
 width: 18em;
 padding: 0.5em 0.8em;
 border-radius: 5px;
@@ -115,11 +115,23 @@ margin-bottom: 1em;
 ::-webkit-input-placeholder{ /* questo code funziona solo per Safari,Chrome,Opera*/
   color: var(--secondary); 
 }
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: var(--secondary); 
+ 
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: var(--secondary); 
 
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color: var(--secondary); 
+  
+}
 
-button {
+body.account button {
+display: flex;
 height: 2em;
-padding: 0.5em 0.9em;
+padding: 0.5em 1em;
 margin-top:  3em;
 margin-left: 8em;
 border-radius: 5px;
@@ -128,16 +140,51 @@ background-color: var(--primary);
 color:white;
 }
 
-button:hover {
+body.account button:hover {
   background-color: #991eb5;
 }
 
-p{
+body.account p{
   color: white;
   margin: auto;
   text-align: center;
 }
 
-a{
+body.account a{
   color: var(--secondary);
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: auto;
+  margin-top: 3em;
+  max-height: 100px;
+  border-top: 1px solid #332940;      /*colore sidebar*/
+}
+
+.social-list {
+  list-style-type: none;
+  display:flex; 
+  padding-left: 3vw;
+}
+
+.social-list-item {
+  padding-right: 1em;
+}
+
+.svg-icon {
+  fill: #fff;
+  height: 20px;
+  width: 20px; 
+}
+
+.svg-icon:hover {
+  fill: #bb86fc;      /*var(--primary);*/
+}
+
+.legal {
+  padding-right: 3vw;
+  color: white;
 }
