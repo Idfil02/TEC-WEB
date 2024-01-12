@@ -1,14 +1,59 @@
 <?php 
-    require_once "./strumenti_condivisi/strumenti.php";
+    /********************************************/  
+    /*************** FILE ESTERNI ***************/
+    /********************************************/
+    require_once "strumenti_condivisi/strumenti.php";
+    require_once "strumenti_condivisi/connessione.php";
 
+
+    /********************************************/
+    /************** FUNZIONI UTILI **************/
+    /********************************************/
+    function getQuizInfo($selectedQuiz) {
+    
+        $connection = new AccessDB;
+   
+        if ($connection->open_connection()) {
+            $query_result = $connection->execute_query("SELECT * FROM Quiz WHERE ID='". $selectedQuiz ."'");  
+            return $query_result[0];
+        }
+    
+        $connection->close_connection();
+
+        /* da implementare modo per gestire errori connessione/quiz non esiste */
+    }
+
+
+    function buildQuiz($html, $info) {
+        $html = str_replace('[quizID]', $info['ID'], $html);  
+        $html = str_replace('[quiz-title]', $info['Nome'], $html); 
+        $html = str_replace('[quiz-description]', $info['Descrizione'], $html);
+        $html = str_replace('[quiz-time]', $info['Tempo']/60, $html);
+        $html = str_replace('[quiz-category]', $info['Categoria'], $html); 
+        $html = str_replace('[quiz-tot-played]', $info['Num_Giocate'], $html); 
+        $html = str_replace('[quiz-tot-saved]', $info['Num_Like'], $html); 
+        $html = str_replace('[quiz-tot-questions]', $info['Num_Domande'], $html); 
+        $html = str_replace('[quiz-img]', $info['Url_Immagine'], $html); 
+        return $html;
+    }
+
+
+    /*********************************************/
+    /***** CREAZIONE PAGINA PHP/HTML DEL QUIZ ****/
+    /*********************************************/
     $template = file_get_contents('layout_condivisi/template_layout.html');
     $main_content = file_get_contents('layout_pagine/pagina_quiz.html');
 
-    $title = "quiz";         //titolo della pagina          /* serve connessione a db perchè voglio aggiungere nome quiz prima del quiz nel titolo */
+    $quizInfo = getQuizInfo($_GET['quizID']);           /*ricavo array con info del quiz*/
+
+    $title = $quizInfo['Nome'] . " quiz";         //titolo della pagina      
     $pageID = "QuizPage";           //id della pagina
     $keywords = "quiz, gioco, cultura, divertimento, apprendimento";        //parole chiave per SEO
-    $description = "? Testa la tua conoscenza divertendoti con questo quiz.";      //breve descrizione della pagina             /* serve connessione a db perchè voglio aggiungere nome quiz prima del resto*/
+    $description = $quizInfo['Nome'] . "Testa la tua conoscenza divertendoti con questo quiz.";      //breve descrizione della pagina          
 
     $page = buildPage($template, $main_content, $title, $pageID, $keywords, $description);
-    echo $page;         //mostra la pagina creata
+
+    $page = buildQuiz($page, $quizInfo);  
+
+    echo $page;        //mostra la pagina creata
 ?>

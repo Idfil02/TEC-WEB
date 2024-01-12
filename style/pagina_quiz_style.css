@@ -4,6 +4,10 @@
     --wrong: #FF0000;
 }
 
+/***********************************************/
+/************** STILE PAGINA QUIZ  *************/
+/***********************************************/
+
 #quiz-container {
     height: auto;
     margin: 2em;
@@ -53,12 +57,18 @@
     fill: #03dac5;
 }
 
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .tag {
     text-align: center;
     color: black;
     background-color: #bb86fc;     /*var(--primary)*/
     border-radius: 10px;
     padding: 3px;
+    margin: 2px;
     border: none;
 }
 
@@ -83,6 +93,14 @@ a.tag {
     align-items: center;
     width: 100%;
     padding-bottom: 0.5em;
+}
+
+#tot-questions-label {
+    text-align: center;
+}
+
+#tot-questions-value {
+    white-space: nowrap;
 }
 
 #tot-questions-value div {
@@ -110,7 +128,7 @@ a.tag {
     display: none;
 }
 
-.icon-text-button{          /*da mettere in generale*/
+.icon-text-button{
     color: white;
     background-color: transparent;
     border: none;
@@ -170,6 +188,7 @@ a.tag {
 }
 
 #question-box {
+    text-align: center;
     padding-top: 1em;
     padding-bottom: 1.5em;
 }
@@ -223,17 +242,25 @@ a.tag {
 }
 
 #after-play-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     width: 100%;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
 }
 
 #after-play-buttons button{
-    width: 49%;
+    width: 47%;
 }
 
 #pause-quiz-container:not(.hidden) {
-    width: 100%;
+    background-image: url('../img/assets/pause_img.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 160px;
+    height: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -270,3 +297,60 @@ a.tag {
 .question-nav-btn.active {
     background-color: #bb86fc;         /*var(--primary)*/
 }
+
+
+
+/********* STILE PER SCHERMI TELEFONO **********/
+@media screen and (max-width: 500px) {
+    .quiz-title {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #quiz-name, #quiz-description {
+        text-align: center;
+    }
+
+    .tags {
+        align-content: center;
+        justify-content: center;
+    }
+
+    #quiz-info {
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: end;
+    }
+
+    #tot-questions-box {
+        order: 1;
+        width: 48%;
+    }
+
+    #on-play-buttons {
+        margin-top: 1em;
+        order: 3;
+        width: 100%;
+    }
+
+    #time-box {
+        height: auto;
+        order: 2;
+        width: 48%;
+    }
+}
+
+
+/********* STILE PER SCHERMI TELEFONO PICCOLO **********/
+@media screen and (max-width: 339px) {
+    #tot-questions-box {
+        width: 100%;
+    }
+
+    #time-box {
+        width: 100%;
+    }
+}
+
+
+/*per schermi minori 300px si rovina tutto*/

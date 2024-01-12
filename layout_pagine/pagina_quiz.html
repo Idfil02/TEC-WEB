@@ -3,23 +3,23 @@
     <!-- INFO SUL QUIZ -->
     <div id="quiz-header">
         <div class="quiz-title">
-            <div class="quiz-image" style="background-image: url('./placeholder.png');">            <!-- da implementare []-->
-                <input type="checkbox" class="heart" id="salva-[quizID]" aria-label="Salva quiz">
-                <label for="salva-[quizID]">
+            <div class="quiz-image" style="background-image: url('[quiz-img]');">
+                <input type="checkbox" class="heart" id="salva-[quizID]" aria-label="Salva quiz">           
+                <label for="salva-[quizID]">            <!-- da implementare il salva e il giocato -->
                     <svg id="heart-icon" class="svg-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
                         <path d="M50,25 C35,0,-14,25,20,60 L50,90 L80,60 C114,20,65,0,50,25"></path>
                     </svg>
                 </label>
             </div>
             <div>
-                <h1 class="quiz-name">[quiz-title]</h1>
+                <h1 id="quiz-name">[quiz-title]</h1>
                 <div class="tags">
-                    <a href=".\index.php" class="tag" aria-label="Vai alla pagina [quiz-categoria]">[quiz-category]</a>            <!-- da cambiare con pagina che mostra tutti quiz categoria -->
-                    <span class="tag">[quiz-time] minuti</span>
-                    <span class="tag">[quiz-tot-played] giocatori</span>
-                    <span class="tag">[quiz-tot-saved] cuori</span>
+                    <a href="[quiz-category].php" id="quiz-category" class="tag" aria-label="Vai alla pagina [quiz-category]">[quiz-category]</a>
+                    <span class="tag" id="quiz-time">[quiz-time] minuti</span>
+                    <span class="tag" id="quiz-players">[quiz-tot-played] giocate</span>
+                    <span class="tag" id="quiz-likes">[quiz-tot-saved] cuori</span>
                 </div>
-                <h2 class="quiz-description">[quiz-description]</h2>
+                <h2 id="quiz-description">[quiz-description]</h2>
             </div>
         </div>
     </div>
@@ -59,7 +59,7 @@
             </div>
             <div id="time-box" class="text-info">
                 <div id="time-label"> <strong>TIMER</strong> </div>
-                <div id="time-value">[quiz-time]</div>
+                <div id="time-value" role="timer" aria-live="polite">[quiz-time]</div>
             </div>
         </div>
         <div id="quiz-content-box">
@@ -68,15 +68,13 @@
             <!-- durante il gioco -->
             <div id="question-box" class="on-play hidden"></div>
             <div id="answers-box" class="on-play hidden">
-                <button id="answer1" class="text-button" type="button" onclick="checkAnswer(this)"></button>
-                <button id="answer2" class="text-button" type="button" onclick="checkAnswer(this)"></button>
-                <button id="answer3" class="text-button" type="button" onclick="checkAnswer(this)"></button>
-                <button id="answer4" class="text-button" type="button" onclick="checkAnswer(this)"></button>
+                <button id="answer1" class="text-button" type="button"></button>
+                <button id="answer2" class="text-button" type="button"></button>
+                <button id="answer3" class="text-button" type="button"></button>
+                <button id="answer4" class="text-button" type="button"></button>
             </div>
             <!-- durante la pausa -->
-            <div id="pause-quiz-container" class="hidden">
-                <img src="placeholder.png" alt="Il gioco è in pausa">           <!-- da implementare immagine carina -->
-            </div>
+            <div id="pause-quiz-container" class="hidden" aria-label="Gioco in pausa"></div>
             <!-- dopo il gioco -->
             <div id="end-container" class="after-play hidden">
                 <div class="end-text">Hai totalizzato</div>
@@ -91,17 +89,20 @@
         </div>
         <div id="questions-nav-bar" class="on-play hidden" aria-label="Naviga domande">
             <div id="prev-question" class="move-questions-bar">
-                <button id="prev-question-button" class="text-button" type="button"> <strong><abbr>PREC.</abbr></strong> </button>
+                <button id="prev-question-button" class="text-button" type="button"> <strong><abbr title="precedente">PREC.</abbr></strong> </button>
             </div>
             <div id="questions-nav"></div>
             <div id="next-question" class="move-questions-bar">
-                <button id="next-question-button" class="text-button" type="button"> <strong><abbr>SUCC.</abbr></strong> </button>
+                <button id="next-question-button" class="text-button" type="button"> <strong><abbr title="successivo">SUCC.</abbr></strong> </button>
             </div>
         </div>
     </div>
 </div>
 
-<script src="script/pagina_quiz.js"></script>
+<script type="module" src="script/pagina_quiz.js"></script>
 <noscript>
-    <meta http-equiv="refresh" content="0; url=/">      <!-- al posto di url= path pagina html da visualizzare se non funziona js-->
+    <!-- pagina html da visualizzare se non funziona js da implementare-->
 </noscript>
+
+
+

@@ -1,39 +1,5 @@
-/***********************************************/
-/************** TEST QUIZ DOMANDE *************/
-/***********************************************/
-/* da cancellare quando ho connessione a db - da implementare */
-const quizData = [
-    {
-      question: "What is the capital of France?",
-      options: ["Paris", "London", "Berlin", "Madrid"],
-      answer: "Paris",
-    },
-    {
-      question: "What is the largest planet in our solar system?",
-      options: ["Mars", "Saturn", "Jupiter", "Neptune"],
-      answer: "Jupiter",
-    },
-    {
-      question: "Which country won the FIFA World Cup in 2018?",
-      options: ["Brazil", "Germany", "France", "Argentina"],
-      answer: "France",
-    },
-    {
-      question: "What is the tallest mountain in the world?",
-      options: ["Mount Everest", "K2", "Kangchenjunga", "Makalu"],
-      answer: "Mount Everest",
-    },
-    {
-      question: "Which is the largest ocean on Earth?",
-      options: [
-        "Pacific Ocean",
-        "Indian Ocean",
-        "Atlantic Ocean",
-        "Arctic Ocean",
-      ],
-      answer: "Pacific Ocean",
-    },
-];
+import { AjaxRequest } from './DB_connection.js'
+
 
 /***********************************************/
 /*************** VARIABILI UTILI  **************/
@@ -44,15 +10,23 @@ const counterAnswers = document.getElementById('n_questions_given');
 const questionsNav = document.getElementById('questions-nav');
 const timerContainer = document.getElementById('time-value')
 const answerBtns = document.querySelectorAll('#answers-box .text-button');
-const wrongAnswerContainer = document.getElementById('wrong-answers-box'); 
+const wrongAnswerContainer = document.getElementById('wrong-answers-box');
+const likesCounter = document.getElementById('quiz-likes'); 
 
+
+let numQuestions = document.getElementById('tot-questions').textContent.replace("/", "").trim();        // num totale di domande
 let lastQuestionBtn = null;     //ultimo bottone di questions-nav premuto
 let wrong_answers = []      //array with values {index : 123, (wrong)answer : xyz} che contiene le risposte sbagliate (comprese le nulle)
+let quizData = [];
+let quizID;
 
 
 /***********************************************/
 /******* ASSOCIAZIONE BOTTONI - FUNZIONI *******/
 /***********************************************/
+const heartBtn = document.querySelector('input[type="checkbox"].heart');
+heartBtn.addEventListener('change', function(event) {(event.target.checked) ? saveQuiz(true) : saveQuiz(false)});
+
 const startBtn = document.getElementById('play-button');
 startBtn.addEventListener('click', startQuiz);
 
@@ -74,10 +48,53 @@ retryBtn.addEventListener('click', retryQuiz);
 const checkWrongBtn = document.getElementById('check-wrong-button');
 checkWrongBtn.addEventListener('click', showWrongAnswers);
 
+const answer1 = document.getElementById('answer1');
+answer1.addEventListener('click', function(){checkAnswer(answer1);});
+
+const answer2 = document.getElementById('answer2');
+answer2.addEventListener('click', function(){checkAnswer(answer2);});
+
+const answer3 = document.getElementById('answer3');
+answer3.addEventListener('click', function(){checkAnswer(answer3);});
+
+const answer4 = document.getElementById('answer4');
+answer4.addEventListener('click', function(){checkAnswer(answer4);});
+
 
 /***********************************************/
 /************ FUNZIONI PER BOTTONI *************/
 /***********************************************/
+function saveQuiz(save) {           //se save==true salvo il quiz altrimenti lo tolgo
+    if (save==true){
+        console.log("test bottone like");   
+
+        // Aggiungo un like al numero di cuori + salvo nel db
+        AjaxRequest(quizID, 'likes', function(response){ updateHearts(response) }, '+1');
+    }
+    else {
+        console.log("test bottone unlike");
+
+        // Tolgo un like al numero di cuori + salvo nel db
+        AjaxRequest(quizID, 'likes', function(response){ updateHearts(response) }, '-1');
+    }
+}
+
+
+function updateHearts(response) {
+    // Se loggato
+    if(response != -1){
+        likesCounter.innerHTML = response + " cuori";
+    }
+    // Se non loggato
+    else {
+        // Tolgo check
+        heartBtn.checked = false;
+        // Avviso che non si è loggati
+        alert("Non sei loggato");
+    }
+}
+
+
 function startQuiz(){
     console.log("test bottone play");
 
@@ -90,10 +107,10 @@ function startQuiz(){
     startBtn.classList.add('hidden');
 
     // Carico barra di navigazione tra domande
-    questionsNavBuilder(3);             /*php connessione a db per sapere quante domande sono da implementare*/
+    questionsNavBuilder(numQuestions); 
 
     // Attivo il timer
-    startTimer(60);           /* php connessione a db per sapere il tempo (in secondi) */
+    startTimer(totalTime);
     
     // Carico la prima domanda
     questionLoader(0);
@@ -107,6 +124,7 @@ function stopQuiz() {
     const pausePaths = document.querySelectorAll('.pause');
     const btnText = document.getElementById('stop-button-text');
     const onPlayQuiz = document.querySelectorAll('#quiz-content-box .on-play');
+    const onplayNav = document.getElementById('questions-nav-bar');
 
     /* Metto in pausa */
     if (resumePath.classList.contains('hidden')) {
@@ -118,10 +136,13 @@ function stopQuiz() {
         btnText.textContent = "Riprendi";
         stopBtn.classList.add('bigger');
 
-        // Nascondere quiz content box        
+        // Nascondo quiz content box        
         onPlayQuiz.forEach(action => {
             action.classList.add('hidden');
         });
+        // Nascondo nav tra domande
+        onplayNav.classList.add('hidden');
+
         // Mostro img gioco in pausa
         document.getElementById('pause-quiz-container').classList.remove('hidden');
 
@@ -142,18 +163,25 @@ function stopQuiz() {
         onPlayQuiz.forEach(action => {
             action.classList.remove('hidden');
         });
+        // Mostro nav tra domande
+        onplayNav.classList.remove('hidden');
 
         // Nascondo img gioco in pausa
         document.getElementById('pause-quiz-container').classList.add('hidden');
 
         // Riattivo il timer
-        startTimer(totalTime);
+        startTimer(remainingTime);
     }
 }
 
 
 function giveUp() {
-    // Termina il quiz
+    // Controllo se era in pausa il gioco
+    const pauseContainer = document.getElementById('pause-quiz-container');
+    if(!pauseContainer.classList.contains('hidden'))
+        stopQuiz();
+
+    // Termino il gioco
     endQuiz();
 
     // Salvo le domande senza risposta
@@ -164,6 +192,7 @@ function giveUp() {
         }
     });
 }
+
 
 function endQuiz() {
     console.log("test bottone fine");
@@ -185,6 +214,11 @@ function endQuiz() {
     const score = document.getElementById('score');
     const questionGiven = counterAnswers.textContent;
     score.innerHTML = "<strong>" + (questionGiven - wrong_answers.length) + "</strong>";
+
+    // Aumentare counter giocate 
+    AjaxRequest(quizID, 'players', function(response){
+        document.getElementById('quiz-players').innerHTML = response + " giocate";
+    });
 }
 
 
@@ -198,10 +232,10 @@ function prevQuestion() {
     const currQuestion = parseInt(currQuestionNav.textContent);
 
     // Cerco bottone precedente 
-    for (let id = currQuestion-1; id >= 0; id--) {                  /* da implementare connessione a db per sapere totale domande */
+    for (let id = currQuestion-1; id >= 0; id--) {
         // Se è la prima domanda riguardo dalla fine
         if(id < 1)
-            id = 3;           /* da implementare connessione a db per sapere totale domande */
+            id = numQuestions;
 
         const btn = document.getElementById(`to-question${id}`);            
         if (!btn.classList.contains('wrong') && !btn.classList.contains('correct')) {
@@ -222,9 +256,9 @@ function nextQuestion() {
     const currQuestion = parseInt(currQuestionNav.textContent);
 
     // Cerco bottone successivo
-    for (let id = currQuestion+1; id >= 1; id++) {                  /* da implementare connessione a db per sapere totale domande */
+    for (let id = currQuestion+1; id >= 1; id++) {
         // Se è la prima domanda riguardo dalla fine
-        if(id > 3)                     /* da implementare connessione a db per sapere totale domande */
+        if(id > numQuestions) 
             id = 1; 
 
         console.log(id);
@@ -284,7 +318,7 @@ function showWrongAnswers() {
             
                 let wrongQuestion = document.createElement("div");
                 wrongQuestion.setAttribute('id', 'wrong-question-text');
-                wrongQuestion.innerHTML = "<strong>" + quizData[question_index].question + "</strong>";          /* da implementare conn a db */
+                wrongQuestion.innerHTML = "<strong>" + getQuizData(question_index, 'Domanda') + "</strong>";
                 wrongEntry.append(wrongQuestion);
             
                 let wrongAnswer = document.createElement("div");
@@ -294,7 +328,7 @@ function showWrongAnswers() {
             
                 let correctAnswer = document.createElement("div");
                 correctAnswer.setAttribute('id', 'correct-answer-text');
-                correctAnswer.innerHTML = "La risposta corretta: <em>" + quizData[question_index].answer + "</em>";            /* da implementare conn a db */
+                correctAnswer.innerHTML = "La risposta corretta: <em>" + getQuizData(question_index, 'Risp_corretta') + "</em>";
                 wrongEntry.append(correctAnswer);
             });
         }
@@ -312,17 +346,17 @@ function showWrongAnswers() {
 
 
 /***********************************************/
-/************ GESTIONE DINAMICA QUIZ ***********/
+/******* GESTIONE DINAMICA DOMANDE QUIZ ********/
 /***********************************************/
-function questionLoader(question_index) {         /* da implementare supponiamo connessione a db php che mi da quizData (per farlo posso usare altra funzione con ajax)*/
+function questionLoader(question_index) {
     // Carico domanda
     const questionContainer = document.getElementById("question-box");
-    questionContainer.innerHTML = "<strong>" + quizData[question_index].question + "</strong>";
+    questionContainer.innerHTML = "<strong>" + getQuizData(question_index, 'Domanda') + "</strong>";
 
     // Carico risposte
     answerBtns.forEach(function(button, index) {
         button.disabled = false;        // riattivo i bottoni (disattivati quando data risposta precedente)
-        button.textContent = quizData[question_index].options[index];
+        button.textContent = getQuizData(question_index, 'Risposta'+(index+1));
         button.classList.remove('correct');
         button.classList.remove('wrong');
     });
@@ -353,11 +387,7 @@ function questionsNavBuilder(totQuestions) {
             lastQuestionBtn = question_i_btn;
 
             // Per scroll della scrollbar
-            const scrollDistance = question_i_btn.getBoundingClientRect().left - questionsNav.getBoundingClientRect().left;
-            questionsNav.scroll({
-                left: scrollDistance,
-                behavior: 'smooth'
-            });
+            question_i_btn.scrollIntoView({ behavior: "smooth", inline: "center" });
         });
 
         // Aggiungo il bottone alla barra di navigazione
@@ -378,14 +408,14 @@ function checkAnswer(answerBtn) {
         button.disabled = true;
     });
 
-    // Controllo risposta data e risposta esatta
-    var answer = answerBtn.textContent;  
+    // Risposta data
+    let answer = answerBtn.textContent;
 
     let navQuestionBtn = document.querySelector('.question-nav-btn.active');      //per sapere indice della domanda
     let question_index = parseInt(navQuestionBtn.textContent)-1;
     
     // Risposta esatta
-    if(answer === quizData[question_index].answer) {
+    if(answer === getQuizData(question_index, 'Risp_corretta')) {
         answerBtn.classList.add('correct');
         navQuestionBtn.classList.add('correct');
     }
@@ -401,35 +431,73 @@ function checkAnswer(answerBtn) {
 
     // Aggiorno il contatore delle risposte date
     counterAnswers.textContent = parseInt(counterAnswers.textContent) + 1;
-    if(counterAnswers.textContent == 3)         /* da implementare conn a db per totale domande */
+    if(counterAnswers.textContent == numQuestions) 
         endQuiz();
     else 
         nextQuestion();
 }
 
 
+/***********************************************/
+/*********** ALTRE FUNZIONI ************/
+/***********************************************/
+// Per input da tastiera
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'ArrowLeft') {
+        prevBtn.click();
+    } 
+    else if (event.key === 'ArrowRight') {
+        nextBtn.click();
+    }
+});
 
+
+window.addEventListener("load", pageInit);
+function pageInit() {
+    // Carico dati domande dal db
+    quizID = document.querySelector('[id^="salva-"]').id.replace("salva-", "");
+    AjaxRequest(quizID, 'questions', function(response) {
+        quizData = JSON.parse(response);
+    });
+
+    // Formatto tempo del timer
+    totalTime = timerContainer.textContent*60;
+    displayTime(totalTime);
+
+    // Modifico stato bottone like (già colorato se ho il like dell'utente)
+    AjaxRequest(quizID, 'user_like', function(response){
+        if (response==1) heartBtn.checked = true;
+    });
+}
+
+
+// Ricavo valore relativo alla key passata per la domanda passata anch'essa come parametro
+function getQuizData(question_index, key){
+    let elem = quizData.find(item => item['ID'] === String(question_index)); 
+    return elem[key];
+}
 
 /***********************************************/
 /**************** GESTIONE TIMER ***************/
 /***********************************************/
 let timer;
-let totalTime;      //tempo rimanente in sec.
+let totalTime;      // tempo totale iniziale in sec.
+let remainingTime;      //tempo rimanente in sec.
 let isTimerRunning = false;
 
 function startTimer(seconds) {
     if (!isTimerRunning) {
         isTimerRunning = true;
-        totalTime = seconds; 
+        remainingTime = seconds; 
         timer = setInterval(updateTimer, 1000);
     }
 }
 
 
 function updateTimer() {
-    if (totalTime > 0) {
-        totalTime--;
-        displayTime();
+    if (remainingTime > 0) {
+        remainingTime--;
+        displayTime(remainingTime);
     } 
     else {      //se il timer finisce
         clearInterval(timer);
@@ -439,12 +507,14 @@ function updateTimer() {
 }  
 
 
-function displayTime() {
-    const minutes = Math.floor(totalTime / 60);
-    const seconds = totalTime % 60;
+function displayTime(time) {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
     const formattedMinutes = formatTime(minutes);
     const formattedSeconds = formatTime(seconds);
     timerContainer.innerText = `${formattedMinutes}:${formattedSeconds}`;
+
+    timerContainer.setAttribute('aria-label', `${formattedMinutes} minuti e ${formattedSeconds} secondi rimanenti`);
 }
 
 
@@ -462,6 +532,6 @@ function pauseTimer() {
 function resetTimer() {
     clearInterval(timer);
     isTimerRunning = false;
-    timerContainer.innerText = `05:00`;            /* da implementare connessione a db per tempo */
-    totalTime = 0;
+    displayTime(totalTime);
+    remainingTime = 0;
 }
