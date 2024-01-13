@@ -91,6 +91,7 @@ a.tag {
     flex-direction: row;
     justify-content: space-between;  
     align-items: center;
+    justify-content: center;
     width: 100%;
     padding-bottom: 0.5em;
 }
@@ -353,4 +354,9 @@ a.tag {
 }
 
 
-/*per schermi minori 300px si rovina tutto*/
+/********* STILE PER SCHERMI MINI (content con scroll) **********/
+@media screen and (max-width: 300px) {
+    :root{
+        width: 300px;
+    }
+}

@@ -6,8 +6,8 @@ class AccessDB {
     /***********************************************/
     private const host = "127.0.0.1";
     private const db_name = "QuackWiz_db";
-    private const user = "root";
-    private const psw = "root";
+    private const user = "jessica";
+    private const psw = "jessica";
     private $connection;
 
 
