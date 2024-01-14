@@ -1,0 +1,32 @@
+:root {
+  --back: #121212;
+  --primary: #bb86fc;
+  --secondary: #03dac5;
+  /* 
+      Per tutti i colori si devono rispettare gli standard di contrasto
+      https://webaim.org/resources/contrastchecker/
+        */
+}
+/* Dimensioni non in px
+      vw = viewport width
+      vh = viewport height
+      
+      em = font size of parent
+      rem = font size of root element
+      */
+
+.settings-image {
+  height: 4vh;
+  width: 4vh;
+  fill: var(--primary);
+}
+
+.settings-link:hover .settings-image {
+  transform: rotate(90deg);
+  transition: transform 0.5s ease;
+}
+
+.settings-link:not(:hover) .settings-image {
+  transform: rotate(0deg);
+  transition: transform 0.5s ease;
+}

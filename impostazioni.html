@@ -1,0 +1,41 @@
+<h2>Impostazioni</h2>
+<div class="tabella-cambio">
+  <h3>Cambia Nome Utente</h3>
+  <form id="changeUsernameForm" method="POST" action="set_user.php">
+    <label for="new-name">Nuovo Nome Utente</label>
+    <input
+      type="text"
+      id="new-name"
+      name="new-name"
+      required
+      placeholder="Nuovo Nome"
+    />
+    <br />
+    <input type="submit" value="Cambia" class="submit" />
+  </form>
+</div>
+<br />
+<div class="tabella-cambio">
+  <h3>Cambia Password</h3>
+  <form id="changePasswordForm" method="POST" action="set_password.php">
+    <label for="old-password">Vecchia Password</label>
+    <input
+      type="password"
+      id="old-password"
+      name="old-password"
+      required
+      placeholder="Vecchia Password"
+    />
+    <label for="new-password">Nuova Password</label>
+    <input
+      type="password"
+      id="new-password"
+      name="new-password"
+      required
+      placeholder="Nuova Paswword"
+    />
+    <br />
+    <input type="submit" value="Cambia" class="submit" />
+  </form>
+</div>
+<br />
