@@ -3,6 +3,8 @@ require_once "strumenti_condivisi/connessione.php";
 
 session_start();
 
+$response = array();
+
 if (isset($_SESSION['user_id']) && isset($_POST['old-password']) && isset($_POST['new-password'])) {
     $oldPassword = $_POST['old-password'];
     $newPassword = $_POST['new-password'];
@@ -30,19 +32,26 @@ if (isset($_SESSION['user_id']) && isset($_POST['old-password']) && isset($_POST
             $stmt->bind_param("si", $newPasswordHash, $_SESSION['user_id']);
             $stmt->execute();
 
-            echo "Password changed successfully!";
+            $response['success'] = true;
+            $response['message'] = "Password changed successfully!";
         } else {
-            echo "Incorrect old password.";
+            $response['success'] = false;
+            $response['message'] = "Incorrect old password.";
         }
 
         // Close the statement
         $stmt->close();
         $connection->close_connection();
     } else {
-        echo "Error connecting to the database.";
+        $response['success'] = false;
+        $response['message'] = "Error connecting to the database.";
     }
 } else {
-    echo "Invalid request.";
+    $response['success'] = false;
+    $response['message'] = "Invalid request.";
 }
-?>
 
+// Return the JSON response
+header('Content-Type: application/json');
+echo json_encode($response);
+?>
