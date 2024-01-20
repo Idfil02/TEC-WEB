@@ -8,28 +8,28 @@
         <meta name="description" content="[description]">
         <meta name="keywords" content="[keywords]">
         <meta name="author" content="QuackWiz"> 
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link rel="stylesheet" href="style/style.css">        <!-- da aggiungere tipo media="screen"-->
         <link rel="stylesheet" href="style/footer_style.css">
         <link rel="stylesheet" href="style/pagina_quiz_style.css">
 
-        <!-- eventuali script js -->
-        <!-- eventuale mini icona per browser con link rel="shortcut icon" type="images/png" href=""-->
+        <link rel="shortcut icon" type="images/png" href="img/assets/icon_logo.png">    
+
     </head>
 
     <body id="[pageID]">
 
-        <!-- aggiungere link per skippare header e andare al contenuto (?) -->
+        <a href="#content" class="screen-reader">Vai al contenuto</a>
         
         [header]
 
-        <!--
-            Volendo si può aggiungere percorso della pagina però non so quanto ha senso, che ad esempio per quiz sono categoria?
-            <nav id="breadcrumbs" aria-label="Percorso">
-            [breadcrumbs]
-            </nav>   
-        --> 
+        <!-- NOTIFICA TOAST ERRORI DB -->
+        <div id="error-notify" class="toast-notify" aria-live="assertive" role="alert">
+            <p id="error-descr"></p>
+            <button id="close-error-button" aria-label="Chiudi">x</button>
+        </div>
     
         <main id="content">
             [content]

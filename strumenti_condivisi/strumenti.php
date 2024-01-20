@@ -22,4 +22,25 @@ function buildPage(String $page, String $content, String $title, String $id, Str
     return $page;
 }
 
+function buildErrorPage($page, $error) {
+    $main_content = file_get_contents('layout_pagine/' . $error . '.html');
+    $title = 'ERRORE ' . $error;
+    $id = 'page'.$error;
+    switch ($error) {
+        case '404':
+            $keywords = 'Errore 404, 404, Errore, Pagina non trovata, Pagina inesistente';
+            $description = 'La pagina specificata non è stata trovata oppure non è disponibile.';
+            break;
+        case '500':
+            $keywords = 'Errore 505, 500, Errore, Errore nel server';
+            $description = 'Si è verificato un errore nel server.';
+            break;
+        default:
+            $keywords = 'Errore';
+            $description = 'Si è verificato un errore.';
+    }
+    $page = buildPage($page, $main_content, $title, $id, $keywords, $description);
+    return $page;
+}
+
 ?>

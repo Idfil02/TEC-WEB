@@ -2,19 +2,36 @@
 
     require_once "../strumenti_condivisi/connessione.php";
 
+    $error = 'Si è verificato un errore nella connessione al database. Ci scusiamo per il disagio. Riprovare più tardi o contattare l\'amministratore se il problema persiste.';
     $connection = new AccessDB;
 
     if ($connection->open_connection()) {
         // Cerco numero di giocatori
-        $n_players = $connection->execute_query("SELECT Num_Giocate FROM Quiz WHERE ID='" . $_GET['quizID'] . "'")[0]['Num_Giocate'];  
-        $n_players++;
+        $query_res = $connection->execute_query("SELECT Num_Giocate FROM Quiz WHERE ID='" . $_GET['quizID'] . "'");  
 
-        // Faccio azione di modifica giocate
-        $connection->execute_mod_DB('Quiz', 'ID='.$_GET['quizID'], 'Num_Giocate', $n_players); 
-        
-        // Ritorno numero di giocate
-        echo $n_players;
+        if(is_array($query_res)) {
+            $n_players = $query_res[0]['Num_Giocate'];
+            $n_players++;
+
+            // Faccio azione di modifica giocate
+            $mod_result = $connection->execute_mod_query("UPDATE Quiz SET Num_Giocate=" . $n_players . " WHERE ID=" . $_GET['quizID']);
+            
+            if($mod_result != '1'){
+                echo $error;
+            }
+            else {
+                // Ritorno numero di giocate
+                echo $n_players;   
+            }
+        }
+        else {
+            echo $error;
+        }
+        $connection->close_connection();
+    }
+    else {
+        echo $error;
     }
 
-    $connection->close_connection();
+
 ?>

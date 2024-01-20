@@ -1,11 +1,11 @@
 <div id="quiz-container">
-
+   
     <!-- INFO SUL QUIZ -->
     <div id="quiz-header">
         <div class="quiz-title">
             <div class="quiz-image" style="background-image: url('[quiz-img]');">
-                <input type="checkbox" class="heart" id="salva-[quizID]" aria-label="Salva quiz">           
-                <label for="salva-[quizID]">            <!-- da implementare il salva e il giocato -->
+                <input type="checkbox" id="salva-[quizID]" class="heart" aria-label="Salva quiz" role="button">           
+                <label for="salva-[quizID]">
                     <svg id="heart-icon" class="svg-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
                         <path d="M50,25 C35,0,-14,25,20,60 L50,90 L80,60 C114,20,65,0,50,25"></path>
                     </svg>
@@ -26,11 +26,11 @@
 
     <!-- AREA DI GIOCO -->
     <div id="quiz-area">
-        <div id="quiz-info">
+        <div id="quiz-info" class="hidden">
             <div id="tot-questions-box" class="text-info">
                 <div id="tot-questions-label"><strong>DOMANDE RISPOSTE</strong></div>
                 <div id="tot-questions-value">
-                    <div id="n_questions_given">0</div>
+                    <div id="n-questions-given">0</div>
                     <div id="tot-questions">/ [quiz-tot-questions]</div>
                 </div>
             </div>
@@ -63,8 +63,10 @@
             </div>
         </div>
         <div id="quiz-content-box">
+            <!-- per js non funzionante -->
+            <div id="error-no-js"> È necessario abilitare Javascript per poter giocare. </div>
             <!-- prima del gioco -->
-            <button id="play-button" class="text-button" type="button"> <strong>INIZIA A GIOCARE</strong> </button>
+            <button id="play-button" class="text-button hidden" type="button"> <strong>INIZIA A GIOCARE</strong> </button>
             <!-- durante il gioco -->
             <div id="question-box" class="on-play hidden"></div>
             <div id="answers-box" class="on-play hidden">
@@ -100,9 +102,6 @@
 </div>
 
 <script type="module" src="script/pagina_quiz.js"></script>
-<noscript>
-    <!-- pagina html da visualizzare se non funziona js da implementare-->
-</noscript>
 
 
 

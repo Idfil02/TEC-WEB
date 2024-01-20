@@ -5,7 +5,7 @@
     session_start();
     $_SESSION['user_id'] = 0;
 
-    /*quando logout faccio session_destroy() oppure unset($_SESSION['user_id'])*/
+    /*quando logout faccio session_destroy() e unset($_SESSION['user_id'])*/
     
     $template = file_get_contents('layout_condivisi/template_layout.html');
     $main_content = file_get_contents('layout_pagine/index.html');
