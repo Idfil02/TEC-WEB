@@ -1,4 +1,4 @@
-import { AjaxRequest } from './DB_connection.js'
+import { AjaxRequest, showErrorToast } from './DB_connection.js'
 
 
 /***********************************************/
@@ -13,7 +13,7 @@ const answerBtns = document.querySelectorAll('#answers-box .text-button');
 const wrongAnswerContainer = document.getElementById('wrong-answers-box');
 const likesCounter = document.getElementById('quiz-likes'); 
 
-let numQuestions = document.getElementById('tot-questions').textContent.replace("/", "").trim();        // num totale di domande
+let numQuestions = document.getElementById('tot-questions').textContent.replace("/", "").trim();
 let lastQuestionBtn = null;     //ultimo bottone di questions-nav premuto
 let wrongAnswers = []      //array with values {index : 123, (wrong)answer : xyz} che contiene le risposte sbagliate (comprese le nulle)
 let quizData = [];
@@ -83,15 +83,14 @@ function saveQuiz(save) {           //se save==true salvo il quiz altrimenti lo 
 
 function updateHearts(response) {
     // Se loggato
-    if(response != -1){
+    if(response != '-1'){
         likesCounter.innerHTML = response + " cuori";
     }
     // Se non loggato
     else {
         // Tolgo check
         heartBtn.checked = false;
-        // Avviso che non si è loggati
-        alert("Non sei loggato");
+        showErrorToast("Attenzione non sei loggato. È necessario essere autenticati per salvare il quiz.");
     }
 }
 

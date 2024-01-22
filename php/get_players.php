@@ -2,7 +2,7 @@
 
     require_once "../strumenti_condivisi/connessione.php";
 
-    $error = 'Si è verificato un errore nella connessione al database. Ci scusiamo per il disagio. Riprovare più tardi o contattare l\'amministratore se il problema persiste.';
+    $error = 'Ops! Qualcosa è andato storto. Al momento non siamo in grado di connetterci al server del quiz. Riprova più tardi. Se il problema persiste, contatta il supporto.';
     $connection = new AccessDB;
 
     if ($connection->open_connection()) {
@@ -14,14 +14,11 @@
             $n_players++;
 
             // Faccio azione di modifica giocate
-            $mod_result = $connection->execute_mod_query("UPDATE Quiz SET Num_Giocate=" . $n_players . " WHERE ID=" . $_GET['quizID']);
-            
-            if($mod_result != '1'){
-                echo $error;
+            if($connection->execute_mod_query("UPDATE Quiz SET Num_Giocate=" . $n_players . " WHERE ID=" . $_GET['quizID'])){
+                echo $n_players;
             }
             else {
-                // Ritorno numero di giocate
-                echo $n_players;   
+                echo $error;
             }
         }
         else {

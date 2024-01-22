@@ -320,7 +320,7 @@ a.tag {
 
 
 /********** STILE PER SCHERMI TELEFONO *********/
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 480px) {
     .quiz-title {
         flex-direction: column;
         align-items: center;

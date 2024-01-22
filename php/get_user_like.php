@@ -5,7 +5,7 @@
     // Se utente è loggato
     session_start();
     if (isset($_SESSION['user_id'])){
-        $error = 'Si è verificato un errore nella connessione al database. Ci scusiamo per il disagio. Riprovare più tardi o contattare l\'amministratore se il problema persiste.';
+        $error = 'Ops! Qualcosa è andato storto. Al momento non siamo in grado di connetterci al server del quiz. Riprova più tardi. Se il problema persiste, contatta il supporto.';
         $connection = new AccessDB;
 
         if ($connection->open_connection()) {

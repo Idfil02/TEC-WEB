@@ -30,13 +30,14 @@ export function AjaxRequest(quizID, request, callback, action="") {
     xmlHttp.onreadystatechange = function() {
         // quando l'operazione è completata
         if (this.readyState == 4 && this.status == 200) {
-            if(this.responseText.includes('errore')){
+            if(this.responseText.includes('Ops')){
                 showErrorToast(this.responseText);
                 if(request='questions')
                     document.getElementById('play-button').disabled = true;
             }
-            else
+            else{
                 callback(this.responseText);
+            }
         }
     };
     if(action=="")
@@ -53,7 +54,7 @@ export function AjaxRequest(quizID, request, callback, action="") {
 /***********************************************/
 let errorToast = document.getElementById('error-notify');
 
-function showErrorToast(errorMessage) {
+export function showErrorToast(errorMessage) {
     var errorDescription = document.getElementById('error-descr');
     errorDescription.textContent = errorMessage;
     errorToast.style.display = 'flex';

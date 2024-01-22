@@ -2,16 +2,16 @@
 
     require_once "../strumenti_condivisi/connessione.php";
 
-    $error = 'Si è verificato un errore nella connessione al database. Ci scusiamo per il disagio. Riprovare più tardi o contattare l\'amministratore se il problema persiste.';
+    $error = 'Ops! Qualcosa è andato storto. Al momento non siamo in grado di connetterci al server del quiz. Riprova più tardi. Se il problema persiste, contatta il supporto.';
     $connection = new AccessDB;
 
     if ($connection->open_connection()) {
-        $query_result = $connection->execute_query("SsELECT * FROM Domande WHERE Quiz='" . $_GET['quizID'] . "'");  
+        $query_result = $connection->execute_query("SELECT * FROM Domande WHERE Quiz='" . $_GET['quizID'] . "'");  
         
         if(is_array($query_result)) {
             echo json_encode($query_result);
         } 
-        else {
+        else{
             echo $error;
         }
 

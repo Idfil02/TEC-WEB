@@ -24,8 +24,14 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
   margin: 0px;
+}
+
+main {
+  flex: 1;
 }
 
 .text-button {
@@ -82,4 +88,26 @@ body {
 
 #close-error-button:hover {
   color: white
+}
+
+
+/************* STILE PAGINE ERRORE *************/
+#error-page-wrapper {
+  padding: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+#error-page-text {
+  margin-left: 2em;
+}
+
+@media screen and (max-width: 480px) {
+  #error-page-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
 }
