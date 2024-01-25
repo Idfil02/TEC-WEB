@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html xml:lang="it" lang="it">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Home">
+    <meta name="keyword" content="[idk]]">
+    <meta name="author" content="QuackWiz">
+    <link rel="stylesheet" href="./style/home.css">
+    <script src="./script/home.js"> </script>
+    <title>Quackwiz - Quiz che fanno quack</title>
+    <link rel="icon" href="./Images/Duckwiz.png">
+</head>
+<header>
+    
+</header>
+
+<body>
+<main id="[pageID]">
+    <h2 class="section-title"> Aggiunti di Recente</h2> <!--titolo della sezione-->
+    <div class="row"> <!--inizio del carosello-->
+        <div class="arrow-container">
+            <svg class="left left-arrow arrow-svg" onclick="prevCarousel('carousel1')" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11.7071 4.29289C12.0976 4.68342 12.0976 5.31658 11.7071 5.70711L6.41421 11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H6.41421L11.7071 18.2929C12.0976 18.6834 12.0976 19.3166 11.7071 19.7071C11.3166 20.0976 10.6834 20.0976 10.2929 19.7071L3.29289 12.7071C3.10536 12.5196 3 12.2652 3 12C3 11.7348 3.10536 11.4804 3.29289 11.2929L10.2929 4.29289C10.6834 3.90237 11.3166 3.90237 11.7071 4.29289Z" fill="#bb86fc"></path>
+            &lt;
+        </svg>
+        </div>
+        <div class="quiz-row-container">
+            <div class="carousel" id="carousel1">
+
+                <div class="quiz-box">
+                    <div class="tag">
+                        <div class="like-container">
+                            <input type="checkbox" class="like">
+                                <svg id="like-icon"  width="85px" height="85px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke="#03dac5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                </svg>
+                        </div>
+                        <a href="link" class="link-box">
+                            <div class="cover">
+                                <img src="./Images/quiz/palazzi.jpeg" alt="Immagine" class="link">
+                            </div>
+                            <div class="title-bar">
+                                <div class="title-box">
+                                    <p class="title">Quante cose sai sull'uomo più forte del pianeta?</p>
+                                </div>
+                                <p id="time"></p>
+                                <div class="timer-container">
+                                    <svg class="timer" width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)">
+                                            <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M12 6V12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M16.24 16.24L12 12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="quiz-box">
+                    <div class="tag">
+                        <div class="like-container">
+                            <input type="checkbox" class="like">
+                                <svg id="like-icon"  width="85px" height="85px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke="#03dac5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                </svg>
+                        </div>
+                        <a href="link" class="link-box">
+                            <div class="cover">
+                                <img src="./Images/quiz/lol.png" alt="Immagine" class="link">
+                            </div>
+                            <div class="title-bar">
+                                <div class="title-box">
+                                    <p class="title"></p>
+                                </div>
+                                <p id="time"></p>
+                                <div class="timer-container">
+                                    <svg class="timer"  width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)">
+                                            <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M12 6V12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M16.24 16.24L12 12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="quiz-box">
+                    <div class="tag">
+                        <div class="like-container">
+                            <input type="checkbox" class="like">
+                                <svg id="like-icon"  width="85px" height="85px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke="#03dac5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                </svg>
+                        </div>
+                        <a href="link" class="link-box">
+                            <div class="cover">
+                                <img src="" alt="Immagine" class="link">
+                            </div>
+                            <div class="title-bar">
+                                <div class="title-box">
+                                    <p class="title"></p>
+                                </div>
+                                <p id="time"></p>
+                                <div class="timer-container">
+                                    <svg class="timer"  width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)">
+                                            <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M12 6V12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M16.24 16.24L12 12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="quiz-box">
+                    <div class="tag">
+                        <div class="like-container">
+                            <input type="checkbox" class="like">
+                                <svg id="like-icon"  width="85px" height="85px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke="#03dac5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                </svg>
+                        </div>
+                        <a href="link" class="link-box">
+                            <div class="cover">
+                                <img src="" alt="Immagine" class="link">
+                            </div>
+                            <div class="title-bar">
+                                <div class="title-box">
+                                    <p class="title"></p>
+                                </div>
+                                <p id="time"></p>
+                                <div class="timer-container">
+                                    <svg class="timer"  width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)">
+                                            <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M12 6V12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M16.24 16.24L12 12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="quiz-box">
+                    <div class="tag">
+                        <div class="like-container">
+                            <input type="checkbox" class="like">
+                                <svg id="like-icon"  width="85px" height="85px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke="#03dac5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                </svg>
+                        </div>
+                        <a href="link" class="link-box">
+                            <div class="cover">
+                                <img src="" alt="Immagine" class="link">
+                            </div>
+                            <div class="title-bar">
+                                <div class="title-box">
+                                    <p class="title"></p>
+                                </div>
+                                <p id="time"></p>
+                                <div class="timer-container">
+                                    <svg class="timer"  width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)">
+                                            <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M12 6V12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M16.24 16.24L12 12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="quiz-box">Coming Soon...</div>
+
+
+            </div>
+        </div> 
+        <div class="arrow-container">
+            <svg class="arrow right-arrow arrow-svg" onclick="nextCarousel('carousel1')" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.7071 4.29289C12.0976 4.68342 12.0976 5.31658 11.7071 5.70711L6.41421 11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H6.41421L11.7071 18.2929C12.0976 18.6834 12.0976 19.3166 11.7071 19.7071C11.3166 20.0976 10.6834 20.0976 10.2929 19.7071L3.29289 12.7071C3.10536 12.5196 3 12.2652 3 12C3 11.7348 3.10536 11.4804 3.29289 11.2929L10.2929 4.29289C10.6834 3.90237 11.3166 3.90237 11.7071 4.29289Z" fill="#bb86fc">
+                    </path>
+                &gt;
+            </svg>
+        </div> 
+    </div>
+
+    <h2 class="section-title">Quiz del momento</h2>
+    <div class="row"> <!--inizio del carosello-->
+        <div class="arrow-container">
+            <svg class="left left-arrow arrow-svg" onclick="prevCarousel('carousel2')" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11.7071 4.29289C12.0976 4.68342 12.0976 5.31658 11.7071 5.70711L6.41421 11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H6.41421L11.7071 18.2929C12.0976 18.6834 12.0976 19.3166 11.7071 19.7071C11.3166 20.0976 10.6834 20.0976 10.2929 19.7071L3.29289 12.7071C3.10536 12.5196 3 12.2652 3 12C3 11.7348 3.10536 11.4804 3.29289 11.2929L10.2929 4.29289C10.6834 3.90237 11.3166 3.90237 11.7071 4.29289Z" fill="#bb86fc"></path>
+            &lt;
+        </svg>
+        </div>
+        <div class="quiz-row-container">
+            <div class="carousel" id="carousel2">
+                <div class="quiz-box">
+                    <div class="tag">
+                        <div class="like-container">
+                            <input type="checkbox" class="like">
+                                <svg id="like-icon"  width="85px" height="85px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke="#03dac5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                </svg>
+                        </div>
+                        <a href="link" class="link-box">
+                            <div class="cover">
+                                <img src="" alt="Immagine" class="link">
+                            </div>
+                            <div class="title-bar">
+                                <div class="title-box">
+                                    <p class="title"></p>
+                                </div>
+                                <p id="time"></p>
+                                <div class="timer-container">
+                                    <svg class="timer"  width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)">
+                                            <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M12 6V12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M16.24 16.24L12 12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="quiz-box">
+                    <div class="tag">
+                        <div class="like-container">
+                            <input type="checkbox" class="like">
+                                <svg id="like-icon"  width="85px" height="85px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke="#03dac5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                </svg>
+                        </div>
+                        <a href="link" class="link-box">
+                            <div class="cover">
+                                <img src="" alt="Immagine" class="link">
+                            </div>
+                            <div class="title-bar">
+                                <div class="title-box">
+                                    <p class="title"></p>
+                                </div>
+                                <p id="time"></p>
+                                <div class="timer-container">
+                                    <svg class="timer"  width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)">
+                                            <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M12 6V12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M16.24 16.24L12 12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="quiz-box">
+                    <div class="tag">
+                        <div class="like-container">
+                            <input type="checkbox" class="like">
+                                <svg id="like-icon"  width="85px" height="85px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke="#03dac5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                </svg>
+                        </div>
+                        <a href="link" class="link-box">
+                            <div class="cover">
+                                <img src="" alt="Immagine" class="link">
+                            </div>
+                            <div class="title-bar">
+                                <div class="title-box">
+                                    <p class="title"></p>
+                                </div>
+                                <p id="time"></p>
+                                <div class="timer-container">
+                                    <svg class="timer"  width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)">
+                                            <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M12 6V12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M16.24 16.24L12 12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="quiz-box">
+                    <div class="tag">
+                        <div class="like-container">
+                            <input type="checkbox" class="like">
+                                <svg id="like-icon"  width="85px" height="85px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke="#03dac5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                </svg>
+                        </div>
+                        <a href="link" class="link-box">
+                            <div class="cover">
+                                <img src="" alt="Immagine" class="link">
+                            </div>
+                            <div class="title-bar">
+                                <div class="title-box">
+                                    <p class="title"></p>
+                                </div>
+                                <p id="time"></p>
+                                <div class="timer-container">
+                                    <svg class="timer"  width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)">
+                                            <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M12 6V12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M16.24 16.24L12 12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="quiz-box">
+                    <div class="tag">
+                        <div class="like-container">
+                            <input type="checkbox" class="like">
+                                <svg id="like-icon"  width="85px" height="85px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke="#03dac5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                </svg>
+                        </div>
+                        <a href="link" class="link-box">
+                            <div class="cover">
+                                <img src="" alt="Immagine" class="link">
+                            </div>
+                            <div class="title-bar">
+                                <div class="title-box">
+                                    <p class="title"></p>
+                                </div>
+                                <p id="time"></p>
+                                <div class="timer-container">
+                                    <svg class="timer"  width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)">
+                                            <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M12 6V12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M16.24 16.24L12 12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="quiz-box">Coming Soon...</div>
+
+                
+            </div>
+        </div> 
+        <div class="arrow-container">
+            <svg class="arrow right-arrow arrow-svg" onclick="nextCarousel('carousel2')" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.7071 4.29289C12.0976 4.68342 12.0976 5.31658 11.7071 5.70711L6.41421 11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H6.41421L11.7071 18.2929C12.0976 18.6834 12.0976 19.3166 11.7071 19.7071C11.3166 20.0976 10.6834 20.0976 10.2929 19.7071L3.29289 12.7071C3.10536 12.5196 3 12.2652 3 12C3 11.7348 3.10536 11.4804 3.29289 11.2929L10.2929 4.29289C10.6834 3.90237 11.3166 3.90237 11.7071 4.29289Z" fill="#bb86fc">
+                    </path>
+                &gt;
+            </svg>
+        </div> 
+    </div>
+
+
+    <h2 class="section-title">Geografia</h2>
+    <div class="row"> <!--inizio del carosello-->
+        <div class="arrow-container">
+            <svg class="left left-arrow arrow-svg" onclick="prevCarousel('carousel3')" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11.7071 4.29289C12.0976 4.68342 12.0976 5.31658 11.7071 5.70711L6.41421 11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H6.41421L11.7071 18.2929C12.0976 18.6834 12.0976 19.3166 11.7071 19.7071C11.3166 20.0976 10.6834 20.0976 10.2929 19.7071L3.29289 12.7071C3.10536 12.5196 3 12.2652 3 12C3 11.7348 3.10536 11.4804 3.29289 11.2929L10.2929 4.29289C10.6834 3.90237 11.3166 3.90237 11.7071 4.29289Z" fill="#bb86fc"></path>
+            &lt;
+        </svg>
+        </div>
+        <div class="quiz-row-container">
+            <div class="carousel" id="carousel3">
+                <div class="quiz-box">
+                    <div class="tag">
+                        <div class="like-container">
+                            <input type="checkbox" class="like">
+                                <svg id="like-icon"  width="85px" height="85px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke="#03dac5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                </svg>
+                        </div>
+                        <a href="link" class="link-box">
+                            <div class="cover">
+                                <img src="" alt="Immagine" class="link">
+                            </div>
+                            <div class="title-bar">
+                                <div class="title-box">
+                                    <p class="title"></p>
+                                </div>
+                                <p id="time"></p>
+                                <div class="timer-container">
+                                    <svg class="timer"  width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)">
+                                            <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M12 6V12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M16.24 16.24L12 12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="quiz-box">
+                    <div class="tag">
+                        <div class="like-container">
+                            <input type="checkbox" class="like">
+                                <svg id="like-icon"  width="85px" height="85px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke="#03dac5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                </svg>
+                        </div>
+                        <a href="link" class="link-box">
+                            <div class="cover">
+                                <img src="" alt="Immagine" class="link">
+                            </div>
+                            <div class="title-bar">
+                                <div class="title-box">
+                                    <p class="title"></p>
+                                </div>
+                                <p id="time"></p>
+                                <div class="timer-container">
+                                    <svg class="timer"  width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)">
+                                            <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M12 6V12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M16.24 16.24L12 12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="quiz-box">
+                    <div class="tag">
+                        <div class="like-container">
+                            <input type="checkbox" class="like">
+                                <svg id="like-icon"  width="85px" height="85px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke="#03dac5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                </svg>
+                        </div>
+                        <a href="link" class="link-box">
+                            <div class="cover">
+                                <img src="" alt="Immagine" class="link">
+                            </div>
+                            <div class="title-bar">
+                                <div class="title-box">
+                                    <p class="title"></p>
+                                </div>
+                                <p id="time"></p>
+                                <div class="timer-container">
+                                    <svg class="timer"  width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)">
+                                            <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M12 6V12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M16.24 16.24L12 12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="quiz-box">
+                    <div class="tag">
+                        <div class="like-container">
+                            <input type="checkbox" class="like">
+                                <svg id="like-icon"  width="85px" height="85px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke="#03dac5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                </svg>
+                        </div>
+                        <a href="link" class="link-box">
+                            <div class="cover">
+                                <img src="" alt="Immagine" class="link">
+                            </div>
+                            <div class="title-bar">
+                                <div class="title-box">
+                                    <p class="title"></p>
+                                </div>
+                                <p id="time"></p>
+                                <div class="timer-container">
+                                    <svg class="timer"  width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)">
+                                            <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M12 6V12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M16.24 16.24L12 12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="quiz-box">
+                    <div class="tag">
+                        <div class="like-container">
+                            <input type="checkbox" class="like">
+                                <svg id="like-icon"  width="85px" height="85px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke="#03dac5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        </path>
+                                </svg>
+                        </div>
+                        <a href="link" class="link-box">
+                            <div class="cover">
+                                <img src="" alt="Immagine" class="link">
+                            </div>
+                            <div class="title-bar">
+                                <div class="title-box">
+                                    <p class="title"></p>
+                                </div>
+                                <p id="time"></p>
+                                <div class="timer-container">
+                                    <svg class="timer"  width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)">
+                                            <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M12 6V12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                                            <path d="M16.24 16.24L12 12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="quiz-box">Coming Soon...</div>
+
+                
+            </div>
+        </div> 
+        <div class="arrow-container">
+            <svg class="arrow right-arrow arrow-svg" onclick="nextCarousel('carousel3')" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.7071 4.29289C12.0976 4.68342 12.0976 5.31658 11.7071 5.70711L6.41421 11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H6.41421L11.7071 18.2929C12.0976 18.6834 12.0976 19.3166 11.7071 19.7071C11.3166 20.0976 10.6834 20.0976 10.2929 19.7071L3.29289 12.7071C3.10536 12.5196 3 12.2652 3 12C3 11.7348 3.10536 11.4804 3.29289 11.2929L10.2929 4.29289C10.6834 3.90237 11.3166 3.90237 11.7071 4.29289Z" fill="#bb86fc">
+                    </path>
+                &gt;
+            </svg>
+        </div> 
+    </div>
+
+</main>
+    <footer>
+
+    </footer>
+</body>
+</html>

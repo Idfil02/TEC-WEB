@@ -1,0 +1,139 @@
+:root {
+    --back: #121212;
+    --primary: #bb86fc;
+    --secondary: #03dac5;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+html {
+  font-size: 100%;
+  font-family: sans-serif;
+  line-height: 1.5em;
+  /*margin: auto;*/
+  background-color: var(--back);
+}
+
+main{
+    flex: 1;
+    overflow-y: scroll;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    /*margin: auto;*/
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    position: relative;
+}
+
+
+header{
+    background-color: bisque;
+    height: 100px;
+}
+
+footer{
+    background-color: bisque;
+    padding: 10px;
+    text-align: center;
+    height: 50px;
+}
+
+.ricerca{
+    color: var(--primary);
+}
+
+.tag{
+    color: var(--secondary);
+    text-decoration: underline;
+}
+
+.quiz-container{
+    flex: 0 0 auto;
+    position: relative;
+    display: flex;
+    display: inline-block;
+    margin: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    text-align: justify;
+    text-align: left;
+    width: 100%;
+    height: 20%;
+}
+
+.image-container{
+    background-color: #3700b3;
+    position: absolute;
+    height: 100%;
+    width: 15%;
+    margin-left: 5%;
+    overflow: hidden;
+}
+
+
+.image-container img{
+    width:-webkit-fill-available;
+    height: -webkit-fill-available;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    position: absolute;
+    object-fit: cover;
+}
+
+/*
+.quiz-image{
+    flex: 0 1 0;
+    display: block;
+    object-fit: scale-down;
+    margin-left: auto;
+    margin-right: auto;
+}*/
+
+
+.quiz-container:hover{
+    filter: brightness(70%);
+}
+
+.text-container{
+    width: 100%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 25%;
+    margin-right: 5%;
+}
+
+
+.title{
+    color: var(--secondary);
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width:fit-content;
+}
+
+
+p{
+    color: var(--primary);
+}
+
+#author{
+    color: var(--secondary);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#tag{
+    color: var(--secondary);
+    text-decoration: underline;
+    cursor: pointer;
+}
