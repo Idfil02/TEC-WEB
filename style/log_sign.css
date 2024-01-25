@@ -14,11 +14,11 @@ html {
     
   }
 
-body.account {
+div.account {
     min-height: 100vh;
   }
   
-body.account button {
+div.account button {
     text-align: center;
     color: black;
     background-color: var(--secondary);
@@ -26,12 +26,12 @@ body.account button {
     padding: 10px;
   }
   
-body.account button{
+div.account button{
     border: 0;
     background-color: transparent;
   }
   
-  body.account main{
+  div.account main{
     margin-top: 4em;
   }
   
@@ -53,7 +53,7 @@ body.account button{
     align-items: center;
   }
   
-  body.account h2 {
+  div.account h2.undertitle {
   color: var(--primary, #BB86FC);
   text-align: center;
   font-style: normal;
@@ -63,7 +63,7 @@ body.account button{
   margin-bottom: 2em;
   }
   
-  body.account form {
+  div.account form.access {
     width: 10em;
     height: 8em; 
     margin: auto;
@@ -74,14 +74,14 @@ body.account button{
     
   }
   
-  body.account form label {
+  div.account form.access label {
     display: block;
     margin-bottom: 0.5em;
     color: var(--primary);
   
   }
   
-  body.account form input {
+  div.account form.access input {
   display: flex;
   width: 18em;
   padding: 0.5em 0.8em;
@@ -108,7 +108,7 @@ body.account button{
     
   }
   
-  body.account button {
+  div.account form.access button {
   display: flex;
   height: 2em;
   padding: 0.5em 1em;
@@ -120,17 +120,17 @@ body.account button{
   color:white;
   }
   
-  body.account button:hover {
+  div.account form.access button:hover {
     background-color: #991eb5;
   }
   
-  body.account p{
+  div.account p{
     color: white;
     margin: auto;
     text-align: center;
   }
   
-  body.account a{
+  div.account a{
     color: var(--secondary);
   }
   
