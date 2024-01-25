@@ -1,3 +1,28 @@
-<div>
-    pagina di ricerca
+<div id="search-wrapper">
+    <h2 class="ricerca">Risultati di ricerca per: <span class="tag">[tag-ricerca]</span></h2>
+    
+    [risultati-ricerca]
+
+    <div id="more-quiz"> 
+        <p><strong>Non hai trovato ciò che cerchi?</strong></p>
+        <button id="more-quiz-btn" class="text-button" type="button">Suggeriscici un quiz</button>
+    </div>
+    
+    <div id="suggestion-modal" class="modal hidden" role="dialog" aria-modal="true">
+        <h1>Dicci la tua!</h2>
+        <form id="suggestions-form" class="" method="POST"> <!--action="php/set_suggestion.php" method="post"-->
+            <label for="suggestion-text">Quale quiz vorresti vedere su QuackWiz?</label>
+            <textarea id="suggestion-text" name="suggestion" rows="4" cols="50" required></textarea>
+            <div>
+                <button id="close-suggestions" class="cancel" type="button">Annulla</button>
+                <input class="submit" type="submit" value="Invia il messaggio" />
+            </div>
+        </form>
+    </div>
 </div>
+
+
+<script src="script/moreQuiz.js"></script>
+<noscript>
+    <p id="error-no-js"><strong>Attivare Javascript per poter interagire con la pagina.</strong></p>
+</noscript>

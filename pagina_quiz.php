@@ -10,6 +10,7 @@
     /************** FUNZIONI UTILI **************/
     /********************************************/
     function buildQuiz($html, $info) {
+        $html = str_replace('[quiz-header]', file_get_contents('layout_pagine/quiz_header.html'), $html);
         $html = str_replace('[quizID]', $info['ID'], $html);  
         $html = str_replace('[quiz-title]', $info['Nome'], $html); 
         $html = str_replace('[quiz-description]', $info['Descrizione'], $html);
