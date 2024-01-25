@@ -1,0 +1,127 @@
+
+:root {
+    --back: #121212;
+    --primary: #bb86fc;
+    --secondary: #03dac5;
+}
+
+#user-auth-wrapper {
+    min-height: 100vh;
+  }
+  
+#user-auth-wrapper button {
+    text-align: center;
+    color: black;
+    background-color: var(--secondary);
+    border-radius: 18px;
+    padding: 10px;
+  }
+  
+#user-auth-wrapper button{
+    border: 0;
+    background-color: transparent;
+  }
+  
+  #user-auth-wrapper main{
+    margin-top: 4em;
+  }
+  
+  div.login {
+    width: 100%;
+    max-width: 25em;
+    margin: auto;
+    margin-bottom: 8em;
+    justify-content: center;
+    align-items: center;
+  
+  }
+  div.signup {
+    width: 100%;
+    max-width: 25em;
+    margin: auto;
+    margin-bottom: 13em;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #user-auth-wrapper h2 {
+  color: var(--primary, #BB86FC);
+  text-align: center;
+  font-style: normal;
+  font-size: 2em;
+  line-height: normal;
+  font-weight: 200;
+  margin-bottom: 2em;
+  }
+  
+  #user-auth-wrapper form {
+    width: 10em;
+    height: 8em; 
+    margin: auto;
+    margin-left: 4em;
+  background-color: var(--back);
+  justify-content: center;
+  align-items: center;
+    
+  }
+  
+  #user-auth-wrapper form label {
+    display: block;
+    margin-bottom: 0.5em;
+    color: var(--primary);
+  
+  }
+  
+  #user-auth-wrapper form input {
+  display: flex;
+  width: 18em;
+  padding: 0.5em 0.8em;
+  border-radius: 5px;
+  border: 1px solid var(--primary, #BB86FC);
+  background: var(--back);
+  color: var(--secondary);
+  margin-bottom: 1em;
+  }
+  
+  ::-webkit-input-placeholder{ /* questo code funziona solo per Safari,Chrome,Opera*/
+    color: var(--secondary); 
+  }
+  :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: var(--secondary); 
+   
+  }
+  ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: var(--secondary); 
+  
+  }
+  :-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: var(--secondary); 
+    
+  }
+  
+  #user-auth-wrapper button {
+  display: flex;
+  height: 2em;
+  padding: 0.5em 1em;
+  margin-top:  3em;
+  margin-left: 8em;
+  border-radius: 5px;
+  border: 1px solid var(--primary, #BB86FC);
+  background-color: var(--primary);
+  color:white;
+  }
+  
+  #user-auth-wrapper button:hover {
+    background-color: #991eb5;
+  }
+  
+  #user-auth-wrapper p{
+    color: white;
+    margin: auto;
+    text-align: center;
+  }
+  
+  #user-auth-wrapper a{
+    color: var(--secondary);
+  }
+  

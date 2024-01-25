@@ -31,7 +31,7 @@ export function AjaxRequest(quizID, request, callback, action="") {
         // quando l'operazione è completata
         if (this.readyState == 4 && this.status == 200) {
             if(this.responseText.includes('Ops')){
-                showErrorToast(this.responseText);
+                showToast(this.responseText);
                 if(request='questions')
                     document.getElementById('play-button').disabled = true;
             }
@@ -52,23 +52,24 @@ export function AjaxRequest(quizID, request, callback, action="") {
 /***********************************************/
 /********** GESTIONE MESSAGGIO ERRORE **********/
 /***********************************************/
-let errorToast = document.getElementById('error-notify');
+let toast = document.getElementById('toast-notify');
 
-export function showErrorToast(errorMessage) {
-    var errorDescription = document.getElementById('error-descr');
-    errorDescription.textContent = errorMessage;
-    errorToast.style.display = 'flex';
+export function showToast(message, type="error") {
+    var description = document.getElementById('toast-descr');
+    description.textContent = message;
+    toast.style.display = 'flex';
+    toast.setAttribute("class", type);
     
     // Nasconde errore dopo 30sec
     setTimeout(function() {
-        hideErrorToast();
+        hideToast();
     }, 30000);
 }
 
 // Chiusura notifica errore manuale
-const closeError = document.getElementById('close-error-button');
-closeError.addEventListener('click', hideErrorToast);
+const closeToast = document.getElementById('close-toast-button');
+closeToast.addEventListener('click', hideToast);
 
-function hideErrorToast() {
-    errorToast.style.display = 'none';
+function hideToast() {
+    toast.style.display = 'none';
 }

@@ -1,4 +1,4 @@
-import { AjaxRequest, showErrorToast } from './DB_connection.js'
+import { AjaxRequest, showToast } from './DB_connection.js'
 
 
 /***********************************************/
@@ -90,7 +90,7 @@ function updateHearts(response) {
     else {
         // Tolgo check
         heartBtn.checked = false;
-        showErrorToast("Attenzione non sei loggato. È necessario essere autenticati per salvare il quiz.");
+        showToast("Attenzione non sei loggato. È necessario essere autenticati per salvare il quiz.");
     }
 }
 

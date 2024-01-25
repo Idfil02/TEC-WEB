@@ -2,8 +2,10 @@
     require_once "strumenti_condivisi/strumenti.php";
 
     /* test da implementare con login */
+    /*session_start();
+    $_SESSION['user_id'] = 0;*/
     session_start();
-    $_SESSION['user_id'] = 0;
+    unset($_SESSION['user_id']);
 
     /*quando logout faccio session_destroy() e unset($_SESSION['user_id'])*/
     

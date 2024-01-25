@@ -61,12 +61,11 @@ main {
 
 
 /************ STILE NOTIFICHE TOAST ************/
-.toast-notify {
+#toast-notify {
+  color: black;
   position: fixed;
   bottom: 1rem;
   right: 1rem;
-  background-color: #FF0000;      /*var(--wrong)*/
-  color: black;
   font-weight: bold;
   padding: 1em;
   border-radius: 5px;
@@ -78,7 +77,15 @@ main {
   align-items: center;
 }
 
-#close-error-button {
+#toast-notify.error {
+  background-color: #FF0000;      /*var(--wrong)*/
+}
+
+#toast-notify.success {
+  background-color: #00FF00;      /*var(--correct)*/
+}
+
+#close-toast-button {
   border: none;
   background-color: transparent;
   font-weight: bold;
@@ -86,13 +93,19 @@ main {
   font-size: large;
 }
 
-#close-error-button:hover {
+#close-toast-button:hover {
   color: white
 }
 
 
 /************* STILE PAGINE ERRORE *************/
+main:has(#error-page-wrapper) {
+  display: flex;
+  flex-direction: column;
+}
+
 #error-page-wrapper {
+  flex: 1;
   padding: 2em;
   display: flex;
   flex-direction: row;
@@ -110,4 +123,52 @@ main {
     display: flex;
     flex-direction: column;
   }
+}
+
+
+/************* STILE PAGINA RICERCA *************/
+#more-quiz {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/*
+#suggestions-form:not(.hidden) {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}*/
+
+.modal:not(.hidden) {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+#error-no-js {
+  text-align: center;
+  color: #FF0000;
+}
+
+#suggestions-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/*codice filippo*/
+.submit, .cancel {
+  color: white;
+  background-color: var(--primary);
+  padding: 10px;
+  border-radius: 10px;
+  border-style: solid;
 }
