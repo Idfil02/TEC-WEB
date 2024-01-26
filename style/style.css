@@ -1,7 +1,12 @@
 :root {
   --back: #121212;
+  --back-purple: #332940;
   --primary: #bb86fc;
   --secondary: #03dac5;
+  --inactive: #D9D9D9;
+  --correct: #00FF00;
+  --wrong: #FF0000;
+  --inactive-dark: #5c5b5b;
   /* 
 Per tutti i colori si devono rispettare gli standard di contrasto
 https://webaim.org/resources/contrastchecker/
@@ -78,11 +83,11 @@ main {
 }
 
 #toast-notify.error {
-  background-color: #FF0000;      /*var(--wrong)*/
+  background-color: var(--wrong);
 }
 
 #toast-notify.success {
-  background-color: #00FF00;      /*var(--correct)*/
+  background-color: var(--correct);
 }
 
 #close-toast-button {
@@ -155,7 +160,7 @@ main:has(#error-page-wrapper) {
 
 #error-no-js {
   text-align: center;
-  color: #FF0000;
+  color: var(--wrong);
 }
 
 #suggestions-form {
@@ -172,4 +177,13 @@ main:has(#error-page-wrapper) {
   padding: 10px;
   border-radius: 10px;
   border-style: solid;
+}
+
+.cancel {
+  background-color: white;
+  color: var(--primary);
+}
+
+.submit:hover {
+  background-color: var(--back-purple);
 }

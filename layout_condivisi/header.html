@@ -1,15 +1,17 @@
 <header id="main-header">
     <h1>QuackWiz</h1>
-    <nav>
+    <nav aria-label="Menù del sito">
         <ul>
-            <li><a href="index.php"><img src="./img/home-icon.png" alt="Icona Home"> Home</a></li>
+            <li><a href="index.php" lang="en"><img src="./img/home-icon.png" alt="Icona Home" focusable="false" aria-hidden="true"/>Home</a></li>
             <li>
                 <form action="pagina_di_ricerca.php" method="get">
                     <input type="search" id="search" placeholder="Cerca..." name="search">
-                    <button type="submit"><img src="./img/search-icon.png" alt="Icona Ricerca" id="search-icon"></button>
+                    <button type="submit" aria-label="Esegui ricerca">
+                        <img src="./img/search-icon.png" id="search-icon" focusable="false" aria-hidden="true"/>
+                    </button>
                 </form>
             </li>
-            <li><a href="login.php"><img src="./img/profile-icon.png" alt="Icona Profilo"> Login</a></li>
+            <li><a id="account-logger" href="login.php"><img src="./img/profile-icon.png" focusable="false" aria-hidden="true"/>Accedi</a></li>
         </ul>
     </nav>
 </header>

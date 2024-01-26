@@ -2,8 +2,8 @@
 
     require_once "../strumenti_condivisi/connessione.php";
 
-    // Se utente è loggato
     session_start();
+    // Se utente è loggato
     if (isset($_SESSION['user_id'])){
         $error = 'Ops! Qualcosa è andato storto. Al momento non siamo in grado di connetterci al server del quiz. Riprova più tardi. Se il problema persiste, contatta il supporto.';
         $connection = new AccessDB;

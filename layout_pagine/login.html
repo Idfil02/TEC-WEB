@@ -1,17 +1,13 @@
-<div id="user-auth-wrapper">
-  <div class="login">
-    <h2>Login</h2>
-    
-    <form class="auth-form" action="php/set_user.php" method="POST">
-      <label for="username">Username</label>
-      <input type="username" id="username" name="username" placeholder="username" required>
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" placeholder="password" required>
-      <button type="submit" class="submit">Login</button>
-    </form>
-    
-  </div>
+<div id="login" class="user-auth-wrapper">
+  <h2>Accedi</h2>
   
-  <p lang="en"> Don't have an account? Click here to <a href="signup.php">Signup</a></p>
+  <form class="auth-form" action="php/set_user.php" method="POST">
+    <label for="username">Nome utente</label>
+    <input type="username" id="username" name="username" placeholder="username" required>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" placeholder="password" required>
+    <button type="submit" class="submit">Accedi</button>
+  </form>
+  
+  <p> Non hai ancora un account su QuackWiz? <a href="signup.php">Crea un <span lang="en">account</span></a></p>
 </div>
-

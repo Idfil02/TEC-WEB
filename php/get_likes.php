@@ -19,7 +19,6 @@
             // Eventuali modifiche al numero di likes
             if(isset($_GET['action'])){
                 session_start();
-
                 // Se utente loggato
                 if(isset($_SESSION['user_id'])) {
                     $user = $_SESSION['user_id'];

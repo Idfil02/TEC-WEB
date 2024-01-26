@@ -49,6 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Memorizzo ID
         saveID($ID);
+        setcookie('user_id', $ID, 0, "/");
     } 
 
     // Caso login
@@ -68,16 +69,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         if ($user && password_verify($password, $user['Password'])) {
             echo "Login riuscito!";
-
             // Memorizzo ID
             saveID($user['ID']);
+
+            //Torno alla home
+            header('location: ../index.php'); 
+            exit();
         } 
         else {
             echo "Username o password non valide";
         }
     }
 }
-   
 
 function saveID($id) {
     session_start();

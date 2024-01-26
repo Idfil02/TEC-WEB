@@ -3,7 +3,6 @@ require_once "../strumenti_condivisi/connessione.php";
 
 $response = array();
 
-session_start();
 if (isset($_POST['suggestion'])) {
     $suggestion = $_POST['suggestion'];
 
@@ -13,6 +12,7 @@ if (isset($_POST['suggestion'])) {
         // Sanitize the text
         $suggestion = htmlspecialchars($suggestion, ENT_QUOTES, 'UTF-8');
         
+        session_start();
         if(isset($_SESSION['user_id'])){
             $user = $_SESSION['user_id'];
         }

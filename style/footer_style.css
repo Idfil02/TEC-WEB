@@ -27,7 +27,7 @@ footer {
 }
 
 .svg-icon:hover {
-    fill: #bb86fc;      /*var(--primary);*/
+    fill: var(--primary);
 }
 
 .legal {

@@ -1,133 +1,117 @@
 
-:root {
-    --back: #121212;
-    --primary: #bb86fc;
-    --secondary: #03dac5;
+#main-header h1{
+  text-indent: -999em;
+  background-image: url("../img/Logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0.5em;
+  height: 50px;
 }
 
-html {
-    font-size: 100%;
-    font-family: sans-serif;
-    line-height: 1.5em;
-    margin: auto;
-    background-color: var(--back);
-    
-  }
+#main-header nav{
+    background-color: var(--back-purple);
+}
   
-  #main-header h1{
-    text-indent: -999em;
-      background-image: url("../img/Logo.png");
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      /*font-size: 4em;*/
-      margin: 0.5em;
-      height: 50px;
-  }
+#main-header nav ul {
+  max-width: 1024px;
+  margin: auto;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: var(--back-purple);
+  padding: 0;
+
+}
   
-  #main-header nav{
-      background-color: #521359;
+
+#main-header nav li {
+  margin: 0 0.5em;
+  margin-right: 1.2em;
+  padding: 1em;
+}
+
+
+
+#main-header nav a {
+  text-decoration: none;
+  color: var(--primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+#main-header nav a img {
+  width: 32px;
+  height: 32px;
+}
+
+#main-header form {
+  display: flex;
+  align-items: center;
+}
+
+#main-header input {
+  border-color: var(--primary);
+  border-radius: 18px;
+  border: 3px solid var(--primary);
+  background-color: var(--back);
+  color: var(--primary);
+  padding: 0.5em;
+  font-size: medium;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+
+
+/* clears the 'X' from Chrome and Safari */
+#main-header [type="search"]::-webkit-search-cancel-button {
+  appearance: none;
+}
+
+#main-header button {
+  background: local;
+  border: none;
+  margin-left: 10px;
+}
+
+#main-header #search-icon {
+  width: 32px;
+  height: 32px;
+}
+
+#main-header nav a.split {
+  margin-left: auto;
+}
+
+/* Media query per il layout responsivo */
+@media only screen and (max-width: 600px) {
+  nav a span {
+    display: none;
   }
-   
-  #main-header nav ul {
-    max-width: 1024px;
-    margin: auto;
-    list-style: none;
-    display: flex;
+}
+
+#main-header div{
+    color: white;
     align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    background-color: #521359;
-    padding: 0;
-  
-  }
-    
-  
-  #main-header nav li {
-    margin: 0 0.5em;
-    margin-right: 1.2em;
-    padding: 1em;
-  }
-  
-  
-  
-  #main-header nav a {
-    text-decoration: none;
-    color: var(--primary);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-  }
-  
-  #main-header nav a img {
-    width: 32px;
-    height: 32px;
-  }
-  
-  #main-header form {
-    display: flex;
-    align-items: center;
-  }
-  
-  #main-header input {
-    border-color: var(--primary);
-    border-radius: 18px;
-    border: 3px solid var(--primary, #BB86FC);
-    background-color: var(--back);
-    color: var(--primary);
-    padding: 0.5em;
-    font-size: medium;
-    box-sizing: border-box;
-    margin: 0;
-  }
-  
-  
-  
-  /* clears the 'X' from Chrome and Safari */
-  #main-header [type="search"]::-webkit-search-cancel-button {
-    appearance: none;
-  }
-  
-  #main-header button {
-    background: local;
-    border: none;
-    margin-left: 10px;
-  }
-  
-  #main-header #search-icon {
-    width: 32px;
-    height: 32px;
-  }
-  
-  #main-header nav a.split {
-    margin-left: auto;
-  }
-  
-  /* Media query per il layout responsivo */
-  @media only screen and (max-width: 600px) {
-    nav a span {
-      display: none;
-    }
-  }
-  
-  #main-header div{
-      color: white;
-      align-items: center;
-  }
-  
-  
-  html::-webkit-scrollbar {
-  width: 20px;
+}
+
+
+html::-webkit-scrollbar {
+width: 20px;
+border-radius: 10px;
+}
+
+html::-webkit-scrollbar-track {
+background: #ccc;
+box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+border-radius: 10px;
+}
+html::-webkit-scrollbar-thumb {
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(.5, #a520ca), color-stop(1,#03dac5));
   border-radius: 10px;
-  }
-  
-  html::-webkit-scrollbar-track {
-  background: #ccc;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-  }
-  html::-webkit-scrollbar-thumb {
-    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(.5, #a520ca), color-stop(1,#03dac5));
-    border-radius: 10px;
-  }
+}

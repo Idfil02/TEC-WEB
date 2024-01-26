@@ -1,18 +1,15 @@
-<div id="user-auth-wrapper">
-  <div class="signup">
-    <h2>Signup</h2>
+<div id="signup" class="user-auth-wrapper">
+    <h2>Registrazione</h2>
     
     <form class="auth-form" action="php/set_user.php" method="POST">
       <label for="email">Email</label>
       <input type="email" id="email" name="email" placeholder="email" required>
-      <label for="username">Username</label>
+      <label for="username">Nome utente</label>
       <input type="username" id="username" name="username" placeholder="username" required>
       <label for="password">Password</label>
       <input type="password" id="password" name="password" placeholder="password" required>
-      <button type="submit" class="submit">Signup</button>
+      <button type="submit" class="submit">Registrami</button>
     </form>
-    
-  </div>
   
-  <p lang="en"> Already have an account? Click here to <a href="login.php">Login</a></p>
+  <p> Hai già un <span lang="en">account</span> su QuackWiz? <a href="login.php">Accedi</a></p>
 </div>

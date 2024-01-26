@@ -1,30 +1,4 @@
-
-/** PER MORE-QUIZ **/
-// è uguale a quella in DB_connection ma serve script come modulo per poterla importare
-let toast = document.getElementById('toast-notify');
-
-function showToast(message, type="error") {
-    var description = document.getElementById('toast-descr');
-    description.textContent = message;
-    toast.style.display = 'flex';
-    toast.setAttribute("class", type);
-    
-    // Nasconde errore dopo 30sec
-    setTimeout(function() {
-        hideToast();
-    }, 30000);
-}
-
-// Chiusura notifica errore manuale
-const closeToast = document.getElementById('close-toast-button');
-closeToast.addEventListener('click', hideToast);
-
-function hideToast() {
-    toast.style.display = 'none';
-}
-
-
-
+import { showToast } from './DB_connection.js'
 
 
 const suggestionModal = document.getElementById('suggestion-modal');
