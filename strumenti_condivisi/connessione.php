@@ -36,52 +36,64 @@ class AccessDB {
     }
 
     /* Esecuzione di query che restituiscono valori */
-    public function execute_query($query_text) {
-        try {
-            $result = $this->connection->query($query_text);
-            // Errori nella query
-            if (!$result) {
-                throw new Exception("Errore nella query: " . $this->connection->error . ".");
-            }
-            // Ciclo dei record da restituire
-            else {
-                // Se la query produce dei risultati
-                if($result->num_rows > 0) {
-                    $resultsArray = array();        //array dove immagazzinare risultati query
-                    while($row = $result->fetch_array(MYSQLI_ASSOC)){       //un risultato/elem. dell'array (row) contiene coppie nome_campo : valore campo
-                        array_push($resultsArray, $row);
-                    }
-                    $result->free();
-                    return $resultsArray;
+/* Esecuzione di query che restituiscono valori */
+public function execute_query($query_text, $params = array()) {
+    try {
+        $stmt = $this->connection->prepare($query_text);
+
+        if ($stmt) {
+            $stmt->execute($params);
+
+            $result = $stmt->get_result();
+
+            if ($result) {
+                $resultsArray = array();
+
+                while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+                    array_push($resultsArray, $row);
                 }
-                // Se la query non produce risultati
-                else {
-                    return Array();         //restituisco array vuoto
-                }
+
+                $stmt->close();
+                return $resultsArray;
+            } else {
+                throw new Exception("Errore nella query result: " . $this->connection->error . ".");
             }
+        } else {
+            throw new Exception("Errore nella preparazione della query: " . $this->connection->error . ".");
         }
-        catch (Exception $e) {
-            return $e->getMessage();
-        }
+    } catch (Exception $e) {
+        return $e->getMessage();
     }
+}
+
 
     /* Esecuzione di query che modificano db */
-    public function execute_mod_query($query_text) {
-        try {
-            $result = $this->connection->query($query_text);
-            // Errori nella query
-            if (!$result) {
-                throw new Exception("Errore nella query: " . $this->connection->error . ".");
+/* Esecuzione di query che modificano db */
+public function execute_mod_query($query_text, $params = array()) {
+    try {
+        $stmt = $this->connection->prepare($query_text);
+
+        if ($stmt) {
+            $stmt->execute($params);
+
+            if ($stmt->affected_rows > 0) {
+                $stmt->close();
+                return true; // Query avvenuta correttamente
+            } else {
+                throw new Exception("Errore nella query result: " . $this->connection->error . ".");
             }
-            // Ciclo dei record da restituire
-            else {
-                return $result;     // ritorna true (query avvenuta correttamente)
-            }
+        } else {
+            throw new Exception("Errore nella preparazione della query: " . $this->connection->error . ".");
         }
-        catch (Exception $e) {
-            return $e->getMessage();
-        }
+    } catch (Exception $e) {
+        return $e->getMessage();
     }
+}
+
+public function getConnection() {
+    return $this->connection;
+}
+
 }
 
 ?>
