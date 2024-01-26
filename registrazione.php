@@ -45,5 +45,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
 
     die("Registrazione non riuscita");
+
 }
+
+echo '<script>redirectToHome();</script>';
+
 ?>
