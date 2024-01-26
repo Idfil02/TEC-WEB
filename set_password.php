@@ -5,9 +5,13 @@ session_start();
 
 $response = array();
 
-if (isset($_SESSION['user_id']) && isset($_POST['old-password']) && isset($_POST['new-password'])) {
-    $oldPassword = $_POST['old-password'];
-    $newPassword = $_POST['new-password'];
+if (
+    isset($_SESSION['user_id']) &&
+    isset($_POST['old-password']) &&
+    isset($_POST['new-password'])
+) {
+    $oldPassword = filter_var($_POST['old-password'], FILTER_SANITIZE_STRING);
+    $newPassword = filter_var($_POST['new-password'], FILTER_SANITIZE_STRING);
 
     $connection = new AccessDB;
 
@@ -17,7 +21,7 @@ if (isset($_SESSION['user_id']) && isset($_POST['old-password']) && isset($_POST
         $stmt->bind_param("i", $_SESSION['user_id']);
         $stmt->execute();
         $result = $stmt->get_result();
-        
+
         // Fetch the current hashed password
         $row = $result->fetch_assoc();
         $currentPasswordHash = $row['Password'];

@@ -6,7 +6,7 @@ session_start();
 $response = array();
 
 if (isset($_SESSION['user_id']) && isset($_POST['new-name'])) {
-    $newUsername = $_POST['new-name'];
+    $newUsername = filter_var($_POST['new-name'], FILTER_SANITIZE_STRING);
 
     // Validate the username
     if (empty($newUsername) || strlen($newUsername) < 3 || strlen($newUsername) > 20) {
@@ -16,9 +16,6 @@ if (isset($_SESSION['user_id']) && isset($_POST['new-name'])) {
         $connection = new AccessDB;
 
         if ($connection->open_connection()) {
-            // Sanitize the username
-            $newUsername = htmlspecialchars($newUsername, ENT_QUOTES, 'UTF-8');
-
             // Use prepared statement to update the username in the database
             $stmt = $connection->get_connection()->prepare("UPDATE Utenti SET Username = ? WHERE ID = ?");
             $stmt->bind_param("si", $newUsername, $_SESSION['user_id']);
