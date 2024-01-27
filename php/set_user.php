@@ -17,6 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dbConnected = $dbConnection->open_connection();
 
     if (!$dbConnected) {
+        echo "<script>showToast('Errore di connessione al database', 'error');</script>";
         die("Errore di connessione al database");
     }
 
@@ -25,6 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = $_POST["email"];
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo "<script>showToast('Email non valida', 'error');</script>";
             die("Email non valida");
         }
 
@@ -35,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $existingUser = $dbConnection->execute_query("SELECT * FROM Utenti WHERE Username = ?", [$username]);
 
         if ($existingUser) {
+            echo "<script>showToast('Username già in uso.', 'error');</script>";
             die("Username già in uso.");
         }
 
@@ -44,13 +47,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Ottieni l'ID appena inserito
         $ID = $dbConnection->getConnection()->insert_id;  // Access the insert_id property of the MySQLi connection
 
-        echo "Registrazione completata con successo!";
+        echo "<script>showToast('Registrazione completata con successo!', 'success');</script>";
 
         // Memorizzo ID
         saveID($ID);
 
         // Torno alla home
-        header('location: ../index.php'); 
+        echo "<script>window.location.href='../index.php';</script>";
         exit();
     } 
     // Caso login
@@ -59,15 +62,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = $dbConnection->execute_query("SELECT * FROM Utenti WHERE Username = ?", [$username]);
 
         if ($user && password_verify($password, $user[0]['Password'])) {
-            echo "Login riuscito!";
+            echo "<script>showToast('Login riuscito!', 'success');</script>";
             // Memorizzo ID
             saveID($user[0]['ID']);
 
             // Torno alla home
-            header('location: ../index.php'); 
+            echo "<script>window.location.href='../index.php';</script>";
             exit();
         } 
         else {
+            echo "<script>showToast('Username o password non valide', 'error');</script>";
             echo "Username o password non valide";
         }
     }
