@@ -455,7 +455,7 @@ function pageInit() {
     // Carico dati domande dal db
     quizID = heartBtn.id.replace("salva-", "");
     AjaxRequest(quizID, 'questions', function(response) {
-            quizData = JSON.parse(response);
+        quizData = JSON.parse(response);
     });
 
     // Formatto tempo del timer
@@ -479,7 +479,7 @@ function pageInit() {
 
 // Ricavo valore relativo alla key passata per la domanda passata anch'essa come parametro
 function getQuizData(questionIndex, key){
-    let elem = quizData.find(item => item['ID'] === String(questionIndex)); 
+    let elem = quizData.find(item => item['ID'] === questionIndex); 
     return elem[key];
 }
 

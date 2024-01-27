@@ -48,7 +48,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Memorizzo ID
         saveID($ID);
-        setcookie('user_id', $ID, 0, "/");
+
+        // Torno alla home
+        header('location: ../index.php'); 
+        exit();
     } 
     // Caso login
     else {       

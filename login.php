@@ -6,7 +6,7 @@ $template = file_get_contents('layout_condivisi/template_layout.html');
 $main_content = file_get_contents('layout_pagine/login.html');        
 
 $title = "Accedi a QuackWiz";        
-$pageID = "Login";           
+$pageID = "login";           
 $keywords = "login, accedi, profilo, utente, account";        
 $description = "Accedi a QuackWiz e salva i tuoi quiz preferiti per averli sempre a portata di mano.";    
 

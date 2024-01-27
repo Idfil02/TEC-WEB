@@ -14,7 +14,7 @@
         $connection->close_connection();
 
         $title = "QuackWiz cerca: " . $_GET['search'];         //titolo della pagina
-        $pageID = "pagina-ricerca";           //id della pagina
+        $pageID = "pagina_di_ricerca";           //id della pagina
         $keywords = "quiz, gioco, cerca";        //parole chiave per SEO
         $description = "Trova il quiz che cerchi oppure consigliacene uno da inserire tra il nostro catalogo.";      //breve descrizione della pagina
 

@@ -1,7 +1,7 @@
 window.addEventListener('load', checkIsLogged);
 
 function checkIsLogged() {
-    fetch('get_user.php')
+    fetch('php/get_user.php')
         .then(response => response.text())
         .then(data => {
             if (data === 'true') {

@@ -40,7 +40,7 @@
             if(isset($quizInfo[0])){
                 $quizInfo = $quizInfo[0];
                 $title = $quizInfo['Nome'] . " quiz";         //titolo della pagina      
-                $pageID = "QuizPage";           //id della pagina
+                $pageID = "pagina_quiz";           //id della pagina
                 $keywords = "quiz, gioco, cultura, divertimento, apprendimento";        //parole chiave per SEO
                 $description = $quizInfo['Nome'] . "Testa la tua conoscenza divertendoti con questo quiz.";      //breve descrizione della pagina          
     

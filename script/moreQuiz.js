@@ -1,5 +1,10 @@
 import { showToast } from './DB_connection.js'
 
+window.addEventListener('load', showSuggestionBox);
+
+function showSuggestionBox() {
+    document.getElementById('more-quiz').classList.remove('hidden');
+}
 
 const suggestionModal = document.getElementById('suggestion-modal');
 document.getElementById("more-quiz-btn").addEventListener("click", showSuggestionForm);

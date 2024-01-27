@@ -1,6 +1,5 @@
 button:disabled {
     background-color: var(--inactive);
-    color: var(--inactive-dark);
 }
 
 /***********************************************/
@@ -17,6 +16,10 @@ button:disabled {
 .quiz-title {
     display: flex;
     margin-bottom: 5vh;
+}
+
+#pagina_di_ricerca #quiz-header {
+    border-bottom: 1px solid var(--back-purple);
 }
 
 #quiz-header .quiz-image {
@@ -73,8 +76,8 @@ button:disabled {
 
 .tag {
     text-align: center;
-    color: black;
-    background-color: var(--primary);
+    color: var(--primary);
+    background-color: var(--back-purple);
     border-radius: 10px;
     padding: 3px;
     margin: 2px;
@@ -82,6 +85,11 @@ button:disabled {
 }
 
 a.tag {
+    background-color: var(--primary);
+    color: var(--back-purple);
+}
+
+a.tag:hover {
     background-color: var(--secondary);
 }
 
@@ -138,7 +146,7 @@ a.tag {
 }
 
 .icon-text-button{
-    color: white;
+    color: var(--primary);
     background-color: transparent;
     border: none;
     display: flex;
@@ -152,12 +160,12 @@ a.tag {
 
 .icon-text-button:hover .svg-icon,
 .icon-text-button:hover span {
-    fill: var(--primary);
-    color: var(--primary);
+    fill: var(--secondary);
+    color: var(--secondary);
 }
 
 .icon-text-button:hover .x-symbol {
-    stroke: var(--primary);
+    stroke: var(--secondary);
 }
 
 .bigger .svg-icon, .bigger span {
@@ -166,7 +174,7 @@ a.tag {
 }
 
 .x-symbol {
-    stroke: white;
+    stroke: var(--primary);
     stroke-width: 2px;
 }
 
@@ -191,7 +199,7 @@ a.tag {
 }
 
 #quiz-content-box {
-    background-color: var(--back);
+    background-color: var(--back-purple);
     margin: 2em;
     border: 1px solid white;
     display: flex;
@@ -229,7 +237,7 @@ a.tag {
 }
 
 #answers-box button:hover {
-    background-color: var(--primary);
+    background-color: var(--secondary);
 }
 
 #answers-box button.correct, .question-nav-btn.correct {
@@ -309,56 +317,5 @@ a.tag {
 }
 
 .question-nav-btn.active {
-    background-color: var(--primary);
-}
-
-
-/********** STILE PER SCHERMI TELEFONO *********/
-@media screen and (max-width: 480px) {
-    .quiz-title {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #quiz-name, #quiz-description {
-        text-align: center;
-    }
-
-    .tags {
-        align-content: center;
-        justify-content: center;
-    }
-
-    #quiz-info {
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: end;
-    }
-
-    #tot-questions-box {
-        order: 1;
-        width: 50%;
-    }
-
-    #on-play-buttons {
-        margin-top: 1em;
-        order: 3;
-        width: 100%;
-        margin-left: 0px;
-        margin-right: 0px;
-    }
-
-    #time-box {
-        height: auto;
-        order: 2;
-        width: 50%;
-    }
-}
-
-
-/*********** STILE PER SCHERMI MINI ************/
-@media screen and (max-width: 300px) {
-    :root{
-        width: 300px;
-    }
+    background-color: var(--secondary);
 }

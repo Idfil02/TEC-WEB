@@ -1,7 +1,6 @@
-
 #main-header h1{
   text-indent: -999em;
-  background-image: url("../img/Logo.png");
+  background-image: url("../img/assets/logo_word.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -9,12 +8,12 @@
   height: 50px;
 }
 
-#main-header nav{
-    background-color: var(--back-purple);
+#main-nav{
+  background-color: var(--back-purple);
+  padding: 1em 3em;
 }
   
-#main-header nav ul {
-  max-width: 1024px;
+#main-nav ul {
   margin: auto;
   list-style: none;
   display: flex;
@@ -23,38 +22,32 @@
   width: 100%;
   background-color: var(--back-purple);
   padding: 0;
-
-}
-  
-
-#main-header nav li {
-  margin: 0 0.5em;
-  margin-right: 1.2em;
-  padding: 1em;
 }
 
-
-
-#main-header nav a {
-  text-decoration: none;
-  color: var(--primary);
+#main-nav a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
 }
 
-#main-header nav a img {
-  width: 32px;
-  height: 32px;
+body#index #main-nav a[href="index.php"],
+body#login #main-nav a[href="login.php"],
+body#signup #main-nav a[href="login.php"] {
+  color: var(--secondary);
 }
 
-#main-header form {
+#main-nav li:nth-child(2) {
+  width: 50%;
+}
+
+#main-nav form {
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
-#main-header input {
+#main-nav input {
   border-color: var(--primary);
   border-radius: 18px;
   border: 3px solid var(--primary);
@@ -62,56 +55,27 @@
   color: var(--primary);
   padding: 0.5em;
   font-size: medium;
-  box-sizing: border-box;
   margin: 0;
+  min-width: 12em;
 }
 
+#main-nav input:focus {
+  width: 100%;
+}
 
 
 /* clears the 'X' from Chrome and Safari */
-#main-header [type="search"]::-webkit-search-cancel-button {
+#main-nav [type="search"]::-webkit-search-cancel-button {
   appearance: none;
 }
 
-#main-header button {
+#main-nav button {
   background: local;
   border: none;
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
-#main-header #search-icon {
+.big-icon {
   width: 32px;
   height: 32px;
-}
-
-#main-header nav a.split {
-  margin-left: auto;
-}
-
-/* Media query per il layout responsivo */
-@media only screen and (max-width: 600px) {
-  nav a span {
-    display: none;
-  }
-}
-
-#main-header div{
-    color: white;
-    align-items: center;
-}
-
-
-html::-webkit-scrollbar {
-width: 20px;
-border-radius: 10px;
-}
-
-html::-webkit-scrollbar-track {
-background: #ccc;
-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
-border-radius: 10px;
-}
-html::-webkit-scrollbar-thumb {
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(.5, #a520ca), color-stop(1,#03dac5));
-  border-radius: 10px;
 }

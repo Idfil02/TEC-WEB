@@ -1,0 +1,84 @@
+#error-page-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+/***********************************************/
+/***************** STILE HEADER  ***************/
+/***********************************************/
+#main-nav ul {
+    flex-wrap: wrap;
+}
+
+#main-nav li:nth-child(1) {
+    order: 1;
+    width: 50%;
+}
+
+#main-nav li:nth-child(2) {
+    margin-top: 0.5em;
+    order: 3;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#main-nav li:nth-child(3) {
+    order: 2;
+    width: 50%;
+}
+
+
+/***********************************************/
+/******* STILE PAGINA QUIZ E QUIZ HEADER  ******/
+/***********************************************/
+.quiz-title {
+    flex-direction: column;
+    align-items: center;
+}
+
+#quiz-name,
+#quiz-description {
+    text-align: center;
+}
+
+.tags {
+    align-content: center;
+    justify-content: center;
+}
+
+#quiz-info {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: end;
+}
+
+#tot-questions-box {
+    order: 1;
+    width: 50%;
+}
+
+#on-play-buttons {
+    margin-top: 1em;
+    order: 3;
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+#time-box {
+    height: auto;
+    order: 2;
+    width: 50%;
+}
+
+
+
+/*********** STILE PER SCHERMI SUPER-MINI ************/
+@media screen and (max-width: 300px) {
+    :root {
+        width: 300px;
+    }
+}

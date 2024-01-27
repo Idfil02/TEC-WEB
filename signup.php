@@ -5,7 +5,7 @@
     $main_content = file_get_contents('layout_pagine/signup.html');        
 
     $title = "Registrati su QuackWiz";        
-    $pageID = "Signup";           
+    $pageID = "signup";           
     $keywords = "signup,account,profilo,utente";        
     $description = "Crea un nuovo account su QuackWiz con la tua mail. Potrai salvare tutti i tuoi quiz preferiti.";      
 
