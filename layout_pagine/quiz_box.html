@@ -1,29 +1,25 @@
 <div class="quiz-box">
-    <div class="tag">
-        <div class="like-container">
-            <input type="checkbox" class="like">
-                <svg id="like-icon"  width="85px" height="85px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z" stroke="#03dac5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        </path>
+    <a href="pagina_quiz.php?quizID=[ID]" class="link-box">
+        <div class="quiz-box-cover" style="background-image: url('[image]');">
+            <input type="checkbox" id="salva-[ID]" class="heart" aria-label="Salva quiz" role="button">           
+            <label for="salva-[ID]">
+                <svg class="svg-icon heart-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                    <path d="M50,25 C35,0,-14,25,20,60 L50,90 L80,60 C114,20,65,0,50,25"></path>
                 </svg>
+            </label>
         </div>
-        <a href="pagina_quiz.php?quizID=[ID]" class="link-box">
-            <div class="cover">
-                <img src="[image]" alt="Immagine" class="link">
+        <div class="title-bar">
+            <div class="title-box">
+                <p class="title">[title]</p>
             </div>
-            <div class="title-bar">
-                <div class="title-box">
-                    <p class="title">[title]</p>
-                </div>
-                <p id="time">[time]</p>
-                <div class="timer-container">
-                    <svg class="timer" width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)">
-                            <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
-                            <path d="M12 6V12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
-                            <path d="M16.24 16.24L12 12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </svg>
-                </div>
+            <p id="time">[time]</p>
+            <div class="timer-container">
+                <svg class="timer" width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)">
+                        <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                        <path d="M12 6V12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> 
+                        <path d="M16.24 16.24L12 12" stroke="#03dac5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
             </div>
-        </a>
-    </div>
+        </div>
+    </a>
 </div>

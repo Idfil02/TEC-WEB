@@ -5,15 +5,14 @@
     $template = file_get_contents('layout_condivisi/template_layout.html');
     $main_content = file_get_contents('layout_pagine/pagina_di_ricerca.html');
 
-
-    // da implementare funzione php che mi cerca la roba per test uso che mi mostri quiz che hanno categoria intrattenimento
+    $search = $_GET['search'];
     $connection = new AccessDB;
 
     if ($connection->open_connection()) {
-        $searchResults = $connection->execute_query("SELECT * FROM Quiz WHERE Categoria='Intrattenimento'");  
+        $searchResults = $connection->execute_query("SELECT * FROM Quiz WHERE Nome LIKE '%$search%' OR Descrizione LIKE '%$search%' OR Categoria LIKE '%$search%'");  
         $connection->close_connection();
 
-        $title = "QuackWiz cerca: " . $_GET['search'];         //titolo della pagina
+        $title = "QuackWiz cerca: " . $search;         //titolo della pagina
         $pageID = "pagina_di_ricerca";           //id della pagina
         $keywords = "quiz, gioco, cerca";        //parole chiave per SEO
         $description = "Trova il quiz che cerchi oppure consigliacene uno da inserire tra il nostro catalogo.";      //breve descrizione della pagina

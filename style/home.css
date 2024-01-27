@@ -15,11 +15,10 @@
 }
 
 #home-wrapper .section-title{
-    margin-top: .5%;
+    margin-top: 1em;
     font-size: 1.5em;
     line-height: 1.75em;
     display: flex;
-    color: var(--secondary);
     justify-content:center;
 }
 
@@ -51,35 +50,43 @@
 #home-wrapper .quiz-box {          
     display: inline-block;  
     flex: 0 0 auto;
-    width: calc(25% - 3.5vw); /* 25% per mostrare 4 blocchi - spazio tra i blocchi */
-    margin-right: 4vw; /* spazio tra i blocchi */
-    background-color: #3700b3;
+    width: calc(25% - 3.5vw);   /*25% per mostrare 4 blocchi - spazio tra i blocchi */
+    margin-right: 4vw;      /*spazio tra i blocchi */
+    background-color: var(--back-purple);
     text-align: center;
-    line-height: 15vh; /* altezza del blocco */
+    line-height: 15vh; /*altezza del blocco */
     font-size: 1em;
     position: relative;
     overflow: hidden;    
 }
-#home-wrapper  .cover{
-    height: 100%;
-    width: 100%;
+
+#home-wrapper .quiz-box.not-quiz {
+    line-height: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-#home-wrapper  .like-button{
+.quiz-box-cover{
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.quiz-box-cover .heart ~ label {
     position: absolute;
-    top: 2%;
-    right: 2%;
-    height: 20%;
-    width: 20%;
-    cursor: pointer;
-    z-index: 1;
+    top: 0px;
+    right: 0px;
 }
 
-#home-wrapper  .like{
-    z-index: 1;
-    display: block;
-    height: 100%;
-    width: 100%;
+
+.quiz-box-cover .heart-icon {
+    position: absolute;
+    top: 0px;
+    right: 0px;
 }
 
 
@@ -103,15 +110,7 @@
     text-decoration: none; /* rimuove la sottolineatura del testo del link */
 }
 
-#home-wrapper .quiz-box img{
-    flex: 0 0 auto;
-    display: block;
-    position: absolute;
-    width: 100%;
-    max-width: none;
-}
-
-#home-wrapper .quiz-box:hover img {
+#home-wrapper .quiz-box:not(.not-quiz):hover {
     filter: brightness(70%); /* rende l'immagine leggermente più scura al passaggio del mouse */
 }
 
@@ -194,35 +193,6 @@
     position: absolute;
     height: 100%;
     width: 100%;
-}
-
-#home-wrapper .like-container{
-    height: 25%;
-    width: 30%;
-    top: 0.5vh;
-    right: .2vw;
-    position: absolute;
-}
-
-#home-wrapper .like ~ label {
-    position: absolute;
-}
-
-#home-wrapper .like {
-    display: none;
-}
-
-#home-wrapper .like-container #like-icon{
-    cursor: pointer;
-    z-index: 1;
-    display: flex;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-}
-
-#home-wrapper .like:checked + label #like-icon {
-    fill: var(--secondary);
 }
 
 #home-wrapper .arrow-container {

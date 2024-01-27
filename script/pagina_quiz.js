@@ -62,33 +62,33 @@ answer4.addEventListener('click', function(){checkAnswer(answer4);});
 /***********************************************/
 /************ FUNZIONI PER BOTTONI *************/
 /***********************************************/
-function saveQuiz(save) {           //se save==true salvo il quiz altrimenti lo tolgo
+function saveQuiz(save, quiz = quizID) {           //se save==true salvo il quiz altrimenti lo tolgo
     if (save==true){
         console.log("test bottone like");   
 
         // Aggiungo un like al numero di cuori + salvo nel db
-        AjaxRequest(quizID, 'likes', function(response){ updateHearts(response) }, '+1');
-        heartBtn.setAttribute('aria-label', 'Non mi piace');
+        AjaxRequest(quiz, 'likes', function(response){ updateHearts(response, 'Non mi piace') }, '+1');
     }
     else {
         console.log("test bottone unlike");
 
         // Tolgo un like al numero di cuori + salvo nel db
-        AjaxRequest(quizID, 'likes', function(response){ updateHearts(response) }, '-1');
-        heartBtn.setAttribute('aria-label', 'Mi piace');
+        AjaxRequest(quiz, 'likes', function(response){ updateHearts(response, 'Mi piace') }, '-1');
     }
 }
 
 
-function updateHearts(response) {
+function updateHearts(response, ariaLabel) {
     // Se loggato
     if(response != '-1'){
         likesCounter.innerHTML = response + " cuori";
+        heartBtn.setAttribute('aria-label', ariaLabel);
     }
     // Se non loggato
     else {
         // Tolgo check
         heartBtn.checked = false;
+        heartBtn.setAttribute('aria-label', 'Mi piace');
         showToast("Attenzione non sei loggato. È necessario essere autenticati per salvare il quiz.");
     }
 }

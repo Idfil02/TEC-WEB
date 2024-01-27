@@ -52,7 +52,7 @@ body#signup #main-nav a[href="login.php"] {
   border-radius: 18px;
   border: 3px solid var(--primary);
   background-color: var(--back);
-  color: var(--primary);
+  color: white;
   padding: 0.5em;
   font-size: medium;
   margin: 0;

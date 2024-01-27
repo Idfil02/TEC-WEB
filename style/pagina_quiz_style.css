@@ -54,18 +54,18 @@ button:disabled {
     margin: -1px;
 }
 
-#heart-icon {
+.heart-icon {
     fill: var(--inactive);
     filter: drop-shadow(0px 0px 5px rgb(0 0 0 / 0.4));
     height: 30px;
     width: 30px;
 }
 
-#heart-icon:hover {
+.heart-icon:hover {
     fill: #03dac5;
 }
 
-.heart:checked + label #heart-icon {
+.heart:checked + label .heart-icon {
     fill: #03dac5;
 }
 

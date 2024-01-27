@@ -10,6 +10,16 @@
 
     if ($connection->open_connection()) {
         $quizzes = $connection->execute_query("SELECT ID, Nome, Categoria, Tempo, Url_Immagine FROM Quiz");  
+        session_start();
+        if(isset($_SESSION['user_id'])){
+            $query_res_saved = $connection->execute_query("SELECT Quiz FROM Salvati WHERE Utente='" . $_SESSION['user_id'] . "'"); 
+            $saved_quizzes = array_map(function($item) {
+                return $item['Quiz'];
+            }, $query_res_saved);
+        }
+        else {
+            $saved_quizzes = array();
+        }
         $connection->close_connection();
 
         $title = "QuackWiz";         //titolo della pagina
@@ -19,7 +29,7 @@
 
         $page = buildPage($template, $main_content, $title, $pageID, $keywords, $description);
 
-        $page = buildHome($page, $quizzes);
+        $page = buildHome($page, $quizzes, $saved_quizzes);
     }
     else {
         // errore 500
@@ -31,10 +41,12 @@
 
 
 
-    function buildHome($html, $quizData) {
+    function buildHome($html, $quizData, $savedQuizzes) {
+        // MANCA TUTTO CONTROLLO ERRORI     !!!!!!!!!!
 
         $quiz_box_temp = file_get_contents('layout_pagine/quiz_box.html');
 
+        $quiz_saved = "";
         $quiz_mix = "";
         $quiz_geo = "";
         $quiz_entertainement = "";
@@ -62,10 +74,16 @@
                     default:
                         $quiz_mix .= $quiz_i_box;
                         break;
-                } 
+                }
+
+                // Controllo se quiz salvato
+                if(in_array($quiz_i['ID'], $savedQuizzes)){
+                    $quiz_saved .= $quiz_i_box;
+                }
             }
 
             // Aggiungo quiz_row alle giuste parti della pagina html della home
+            $html = str_replace('[quiz-row-saved]', $quiz_saved, $html);
             $html = str_replace('[quiz-row-random]', $quiz_mix, $html);
             $html = str_replace('[quiz-row-geografia]', $quiz_geo, $html);
             $html = str_replace('[quiz-row-intrattenimento]', $quiz_entertainement, $html);
