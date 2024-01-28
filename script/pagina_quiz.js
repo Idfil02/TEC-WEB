@@ -368,6 +368,7 @@ function questionsNavBuilder(totQuestions) {
         // Creo bottone per navigare alla domanda i+1
         const iQuestionBtn = document.createElement('button');
         iQuestionBtn.setAttribute('id', `to-question${i+1}`);
+        iQuestionBtn.setAttribute('aria-label', `Domanda ${i+1}`);
         iQuestionBtn.classList.add('text-button');
         iQuestionBtn.classList.add('question-nav-btn');
         iQuestionBtn.setAttribute('type', 'button');

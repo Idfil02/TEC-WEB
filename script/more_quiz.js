@@ -7,13 +7,18 @@ function showSuggestionBox() {
 }
 
 const suggestionModal = document.getElementById('suggestion-modal');
-document.getElementById("more-quiz-btn").addEventListener("click", showSuggestionForm);
+const moreQuizBtn = document.getElementById('more-quiz-btn');
+moreQuizBtn.addEventListener("click", showSuggestionForm);
 function showSuggestionForm() {
     if(suggestionModal.classList.contains('hidden')) {
         suggestionModal.classList.remove('hidden');
+        suggestionModal.setAttribute('aria-modal', 'true');
+        document.getElementById('suggestion-text').focus();
     }
     else {
         suggestionModal.classList.add('hidden');
+        suggestionModal.setAttribute('aria-modal', 'false');
+        moreQuizBtn.focus();
     }
 }
 
@@ -21,6 +26,8 @@ document.getElementById("close-suggestions").addEventListener("click", cancelSug
 function cancelSuggestion() {
     document.getElementById("suggestions-form").reset();
     suggestionModal.classList.add('hidden');
+    suggestionModal.setAttribute('aria-modal', 'false');
+    moreQuizBtn.focus();
 }
 
 $(document).ready(function () {

@@ -24,7 +24,6 @@ function addSaved() {
     }
 }
 
-
 const leftArrows = document.querySelectorAll('.left-arrow');
 leftArrows.forEach(function(btn) {
     btn.addEventListener('click', function() {
