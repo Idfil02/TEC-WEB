@@ -9,16 +9,20 @@ function showSuggestionBox() {
 const suggestionModal = document.getElementById('suggestion-modal');
 const moreQuizBtn = document.getElementById('more-quiz-btn');
 moreQuizBtn.addEventListener("click", showSuggestionForm);
+<<<<<<< HEAD
 
 const focusableElStr = '#suggestion-modal textarea:not([disabled]), #suggestion-modal button:not([disabled]), #suggestion-modal input:not([disabled]), #suggestion-modal [tabindex="-1"]';
 const focusableEl = Array.prototype.slice.call(suggestionModal.querySelectorAll(focusableElStr));     // array con elementi della modale che possono essere focussati
 const firstTabStop = focusableEl[0];
 const lastTabStop = focusableEl[focusableEl.length-1];
 
+=======
+>>>>>>> e2a054d3cfe413a5e230bc4bd3a37d5c217c3f5e
 function showSuggestionForm() {
     if(suggestionModal.classList.contains('hidden')) {
         suggestionModal.classList.remove('hidden');
         suggestionModal.setAttribute('aria-modal', 'true');
+<<<<<<< HEAD
 
         firstTabStop.focus();
         suggestionModal.addEventListener('keydown', function(e) {
@@ -41,6 +45,14 @@ function showSuggestionForm() {
                 cancelSuggestion();
             }
         });
+=======
+        document.getElementById('suggestion-text').focus();
+    }
+    else {
+        suggestionModal.classList.add('hidden');
+        suggestionModal.setAttribute('aria-modal', 'false');
+        moreQuizBtn.focus();
+>>>>>>> e2a054d3cfe413a5e230bc4bd3a37d5c217c3f5e
     }
 }
 

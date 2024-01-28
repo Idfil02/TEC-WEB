@@ -7,6 +7,7 @@
         <p><strong>Non hai trovato ciò che cerchi?</strong></p>
         <button id="more-quiz-btn" class="text-button" type="button">Suggeriscici un quiz</button>
     </div>
+<<<<<<< HEAD
 </div>
 <div id="suggestion-modal" class="modal hidden" role="dialog" aria-modal="false" tabindex="-1" >
     <h1 tabindex="-1">Dicci la tua!</h1>
@@ -18,6 +19,20 @@
             <input id="submit-suggestion" class="submit text-button" type="submit" value="Invia il messaggio"/>
         </div>
     </form>
+=======
+    
+    <div id="suggestion-modal" class="modal hidden" role="dialog" aria-modal="true">
+        <h1>Dicci la tua!</h1>
+        <form id="suggestions-form" class="" method="POST"> <!--action="php/set_suggestion.php" method="post"-->
+            <label for="suggestion-text">Quale quiz vorresti vedere su QuackWiz?</label>
+            <textarea id="suggestion-text" name="suggestion" rows="4" cols="50" required tabindex="1"></textarea>
+            <div>
+                <button id="close-suggestions" class="cancel text-button" type="button" tabindex="2">Annulla</button>
+                <input class="submit text-button" type="submit" value="Invia il messaggio" tabindex="3"/>
+            </div>
+        </form>
+    </div>
+>>>>>>> e2a054d3cfe413a5e230bc4bd3a37d5c217c3f5e
 </div>
 
 
