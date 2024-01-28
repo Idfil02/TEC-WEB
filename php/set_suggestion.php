@@ -13,36 +13,35 @@ if (isset($_POST['suggestion'])) {
         $suggestion = htmlspecialchars($suggestion, ENT_QUOTES, 'UTF-8');
         
         session_start();
-        if(isset($_SESSION['user_id'])){
-            $user = $_SESSION['user_id'];
-        }
-        else {
-            $user = -1;     // utente non autenticato salvato come anonimo
-        }
-        $query_res = $connection->execute_mod_query('INSERT INTO Suggerimenti (Utente, Testo) VALUES (' . $user . ', "' . $suggestion . '")');
-        if($query_res!=1) {
+        $user = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : -1;
+
+        try {
+            // Use a parameterized query to prevent SQL injection
+            $query = 'INSERT INTO Suggerimenti (Utente, Testo) VALUES (:user, :suggestion)';
+            $params = array(':user' => $user, ':suggestion' => $suggestion);
+            
+            $connection->execute_mod_query($query, $params);
+
+            $response['success'] = true;
+            $response['message'] = "Suggerimento inviato con successo.";
+        } catch (PDOException $e) {
+            // Log the SQL error for debugging
+            error_log("SQL Error: " . $e->getMessage());
+
             $response['success'] = false;
             $response['message'] = "Invio del messaggio fallito. Riprova più tardi.";
         }
-        else {
-            $response['success'] = true;
-            $response['message'] = "Suggerimento inviato con successo.";
-        }
 
         $connection->close_connection();
-    } 
-    else {
+    } else {
         $response['success'] = false;
         $response['message'] = "Invio del messaggio fallito. Riprova più tardi.";
     }
-} 
-else {
+} else {
     $response['success'] = false;
     $response['message'] = "Inserire un suggerimento valido.";
 }
 
-
 header('Content-Type: application/json');
 echo json_encode($response);
-
 ?>
