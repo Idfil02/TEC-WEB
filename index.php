@@ -22,14 +22,20 @@
         }
         $connection->close_connection();
 
-        $title = "QuackWiz";         //titolo della pagina
-        $pageID = "index";           //id della pagina
-        $keywords = "quiz, gioco, cultura, divertimento, apprendimento";        //parole chiave per SEO
-        $description = "Gioca a questi fantastici quiz online gratuiti. C'è un quiz divertente praticamente per ogni argomento!";      //breve descrizione della pagina        
+        if(isset($quizzes[0]) and is_array($saved_quizzes)){
+            $title = "QuackWiz";         //titolo della pagina
+            $pageID = "index";           //id della pagina
+            $keywords = "quiz, gioco, cultura, divertimento, apprendimento";        //parole chiave per SEO
+            $description = "Gioca a questi fantastici quiz online gratuiti. C'è un quiz divertente praticamente per ogni argomento!";      //breve descrizione della pagina        
 
-        $page = buildPage($template, $main_content, $title, $pageID, $keywords, $description);
+            $page = buildPage($template, $main_content, $title, $pageID, $keywords, $description);
 
-        $page = buildHome($page, $quizzes, $saved_quizzes);
+            $page = buildHome($page, $quizzes, $saved_quizzes);
+        }    
+        else {
+            // errore 404
+            $page = buildErrorPage($template, "404");
+        }
     }
     else {
         // errore 500

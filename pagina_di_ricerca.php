@@ -9,16 +9,22 @@
     $connection = new AccessDB;
 
     if ($connection->open_connection()) {
+
         $searchResults = $connection->execute_query("SELECT * FROM Quiz WHERE Nome LIKE '%$search%' OR Descrizione LIKE '%$search%' OR Categoria LIKE '%$search%'");  
         $connection->close_connection();
 
-        $title = "QuackWiz cerca: " . $search;         //titolo della pagina
-        $pageID = "pagina_di_ricerca";           //id della pagina
-        $keywords = "quiz, gioco, cerca";        //parole chiave per SEO
-        $description = "Trova il quiz che cerchi oppure consigliacene uno da inserire tra il nostro catalogo.";      //breve descrizione della pagina
-
-        $page = buildPage($template, $main_content, $title, $pageID, $keywords, $description);
-        $page = buildSearch($page, $searchResults);
+        if(!is_string($searchResults)){
+            $title = "QuackWiz cerca: " . $search;         //titolo della pagina
+            $pageID = "pagina_di_ricerca";           //id della pagina
+            $keywords = "quiz, gioco, cerca";        //parole chiave per SEO
+            $description = "Trova il quiz che cerchi oppure consigliacene uno da inserire tra il nostro catalogo.";      //breve descrizione della pagina
+    
+            $page = buildPage($template, $main_content, $title, $pageID, $keywords, $description);
+            $page = buildSearch($page, $searchResults);
+        }
+        else {
+            $page = buildErrorPage($template, "500");
+        }   
     }
     else {
         $page = buildErrorPage($template, "500");
@@ -36,14 +42,14 @@
             foreach($quizData as $i => $quiz_i){
                 // Creo box del quiz
                 $quiz_i_box = str_replace('[quizID]', $quiz_i['ID'], $quiz_container);  
-                $quiz_i_box = str_replace('[quiz-title]', $quiz_i['Nome'], $quiz_i_box); 
+                $quiz_i_box = str_replace('[quiz-title]', "<a href='pagina_quiz.php?quizID=" . $quiz_i['ID'] . "'>" . $quiz_i['Nome'] . "</a>", $quiz_i_box); 
                 $quiz_i_box = str_replace('[quiz-description]', $quiz_i['Descrizione'], $quiz_i_box);
                 $quiz_i_box = str_replace('[quiz-time]', $quiz_i['Tempo']/60, $quiz_i_box);
                 $quiz_i_box = str_replace('[quiz-category]', $quiz_i['Categoria'], $quiz_i_box); 
                 $quiz_i_box = str_replace('[quiz-tot-played]', $quiz_i['Num_Giocate'], $quiz_i_box); 
                 $quiz_i_box = str_replace('[quiz-tot-saved]', $quiz_i['Num_Like'], $quiz_i_box); 
                 $quiz_i_box = str_replace('[quiz-img]', $quiz_i['Url_Immagine'], $quiz_i_box); 
-                $quiz_results .= "<a href='pagina_quiz.php?quizID=" . $quiz_i['ID'] . "'>" . $quiz_i_box . "</a>";
+                $quiz_results .= $quiz_i_box;
             }
         }
         else {

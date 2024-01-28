@@ -50,17 +50,17 @@
             }
             // Se quiz selezionato non esiste
             else {
-                // errore 404 (da implementare)
+                // errore 404
                 $page = buildErrorPage($template, "404");
             }
         }
         else {
-            // errore 500 (da implementare)
+            // errore 500
             $page = buildErrorPage($template, "500");
         }
     }
     else {
-        // errore 404 (da implementare)
+        // errore 404
         $page = buildErrorPage($template, "404");
     }
 
