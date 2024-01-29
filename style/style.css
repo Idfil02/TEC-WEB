@@ -469,7 +469,7 @@ body#signup #main-nav a[href="login.php"] .svg-icon,
   height: 100%;
   line-height: 1em;
   text-align: left;
-  width: 60%;
+  width: 55%;
 }
 
 #home-wrapper p {
@@ -477,6 +477,7 @@ body#signup #main-nav a[href="login.php"] .svg-icon,
 }
 
 #home-wrapper .title {
+  font-size: .9em;
   width: 100%;
   display: flex;
   position: absolute;
@@ -492,24 +493,36 @@ body#signup #main-nav a[href="login.php"] .svg-icon,
   white-space: normal;
 }
 
+@media screen and (max-width: 750px) {
+  #home-wrapper .title {
+    font-size: .6em; /* Riduzione della dimensione del testo per schermi più piccoli */
+  }
+}
+
 #home-wrapper #time {
   color: var(--secondary);
-  margin-top: 2%;
-  margin-right: 1%;
+  position: absolute;
+  margin-top: 0%;
+  margin-right: 0%;
   line-height: 1em;
   display: flex;
-  position: absolute;
   flex-direction: row;
-  top: 0%;
-  right: 8.5%;
+  top: 13%;
+  right: 20%;
+}
+
+@media screen and (max-width: 700px) {
+  #home-wrapper #time {
+    font-size: .8em; /* Riduzione della dimensione del testo per schermi più piccoli */
+  }
 }
 
 #home-wrapper .timer-container {
-  top: 5%;
+  top: 1%;
   right: 0%;
   position: absolute;
-  height: 40%;
-  width: 10%;
+  height: 50%;
+  width: 20%;
 }
 
 #home-wrapper .timer-container .timer {
