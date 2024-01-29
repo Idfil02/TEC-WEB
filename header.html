@@ -14,7 +14,16 @@
                     <button type="submit"><img src="./img/search-icon.png" alt="Icona Ricerca" id="search-icon"></button>
                 </form>
             </li>
-            <li><a href="./login.php"><img src="./img/profile-icon.png" alt="Icona Profilo"> Login</a></li>
+            <li id="login-logout">
+                <?php
+                    // Verifica lo stato di accesso dell'utente
+                    session_start();
+                    if (isset($_SESSION['user_id'])) {
+                        echo '<a href="./logout.php"><img src="./img/profile-icon.png" alt="Icona Profilo"> Logout</a>';
+                    } else {
+                        echo '<a href="./login.php"><img src="./img/profile-icon.png" alt="Icona Profilo"> Login</a>';
+                    }
+                ?> </li>
         </ul>
     </nav>
 

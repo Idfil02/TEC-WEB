@@ -46,6 +46,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $page = buildPage($template, $main_content, $title, $pageID, $keywords, $description);
     echo $page;    
 
-    echo '<script>redirectToHome();</script>';
     
 ?>
