@@ -335,7 +335,7 @@ INSERT INTO `quiz` (`ID`, `Nome`, `Descrizione`, `Categoria`, `Tempo`, `Num_Like
 (20, 'Quante ne sai sulla Chimica?', 'Sei un appassionato di Chimica? Allora questo quiz fa per te!','Chimica', 240, 0,0, 'img/chi.jpg', 10),
 (21, 'Quante ne sai sugli insetti?' 'Se ti piacciono gli insetti testa le tue conoscenze rispondendo a queste domande.', 'Natura', 240, 0, 0, 'img/ins.jpg',10),
 (22, 'Quante ne sai sui gatti?', 'Se ami i gatti ecco per te un quiz sui felini.','Natura', 240, 0, 0, 'img/gat.jpg',10),
-(23, 'Quante ne sai sull'Unione Europea', 'Metti alla prova le tue conoscenze rispondendo a queste domande sull\'UE.', 'Cittadinanza', 240, 0, 0, 'img/une.jpg', 10),
+(23, 'Quante ne sai sull\'Unione Europea', 'Metti alla prova le tue conoscenze rispondendo a queste domande sull\'UE.', 'Cittadinanza', 240, 0, 0, 'img/une.jpg', 10),
 (24, 'Attualità', 'Sei sempre informato sulle ultime notizie? Allora saprai sicuramente rispondere a questo quiz!', 'Attualità', 240, 0, 0, 'img/att.jpg', 10);
 -- --------------------------------------------------------
 
