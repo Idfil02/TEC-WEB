@@ -240,6 +240,10 @@ main:has(#error-page-wrapper) {
   text-align: center;
 }
 
+#delete-account-title {
+  color: var(--wrong);
+}
+
 form, form label {
   display: block;
   text-align: center;
@@ -790,7 +794,8 @@ a.tag:hover {
 }
 
 .hidden,
-#quiz-info.hidden {
+#quiz-info.hidden,
+#settings.hidden {
   display: none;
 }
 

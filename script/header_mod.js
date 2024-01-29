@@ -14,6 +14,7 @@ function checkIsLogged() {
                 logIcon.setAttribute("href", "php/logout.php");
             } 
             else {
+                document.getElementById("settings").classList.add("hidden");
                 console.log('user non è loggato');
                 logIcon.setAttribute("href", "login.php");
             }

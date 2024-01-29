@@ -39,4 +39,36 @@
   </form>
 </div>
 <br />
-<script src="messages.js"></script>
+<form id="deleteAccountForm" method="post" action="php/delete_account.php">
+  <h2 id="delete-account-title" class="settings-title">Elimina Account PERMANENTEMENTE</h2>
+
+  <label for="username">Username:</label>
+  <input
+    type="text"
+    id="username"
+    name="username"
+    required
+    placeholder="Nome Utente"
+    minlength="3"
+    maxlength="20"
+  />
+
+  <label for="password">Password:</label>
+  <input
+    type="password"
+    id="password"
+    name="password"
+    required
+    placeholder="Password"
+    minlength="6"
+  />
+  <br />
+  <input
+    type="submit"
+    class="submit text-button"
+    value="Elimina account"
+    action="php/delete_account.php"
+  />
+</form>
+
+<script src="script/messages.js"></script>
