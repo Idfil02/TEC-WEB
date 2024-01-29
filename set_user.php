@@ -6,7 +6,7 @@ session_start();
 $response = array();
 
 if (isset($_SESSION['user_id']) && isset($_POST['new-name'])) {
-    $newUsername = filter_var($_POST['new-name'], FILTER_SANITIZE_STRING);
+    $newUsername = htmlspecialchars(trim($_POST['new-name']));
 
     // Validate the username
     if (empty($newUsername) || strlen($newUsername) < 3 || strlen($newUsername) > 20) {
