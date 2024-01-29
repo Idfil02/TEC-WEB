@@ -1,0 +1,42 @@
+<h2 class="settings-title">Impostazioni</h2>
+<div class="tabella-cambio">
+  <h3 class="settings-title">Cambia nome utente</h3>
+  <form id="changeUsernameForm" method="POST" action="php/re_set_user.php">
+    <label for="new-name">Nuovo nome utente</label>
+    <input
+      type="text"
+      id="new-name"
+      name="new-name"
+      required
+      placeholder="Nuovo Nome"
+    />
+    <br />
+    <input type="submit" value="Cambia" class="submit text-button" />
+  </form>
+</div>
+<br />
+<div class="tabella-cambio">
+  <h3 class="settings-title">Cambia password</h3>
+  <form id="changePasswordForm" method="POST" action="php/set_password.php">
+    <label for="old-password">Vecchia password</label>
+    <input
+      type="password"
+      id="old-password"
+      name="old-password"
+      required
+      placeholder="Vecchia Password"
+    />
+    <label for="new-password">Nuova password</label>
+    <input
+      type="password"
+      id="new-password"
+      name="new-password"
+      required
+      placeholder="Nuova Paswword"
+    />
+    <br />
+    <input type="submit" value="Cambia" class="submit text-button" />
+  </form>
+</div>
+<br />
+<script src="messages.js"></script>

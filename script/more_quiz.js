@@ -1,4 +1,4 @@
-import { showToast } from './DB_connection.js'
+import { AjaxRequestPost, showToast } from './DB_connection.js'
 
 window.addEventListener('load', showSuggestionBox);
 
@@ -44,39 +44,22 @@ function showSuggestionForm() {
     }
 }
 
+const suggestionForm = document.getElementById("suggestions-form");
+suggestionForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    AjaxRequestPost('suggestion', 'suggestion=' + document.getElementById("suggestion-text").value, showResult);
+});
+
 document.getElementById("close-suggestions").addEventListener("click", cancelSuggestion);
 function cancelSuggestion() {
-    document.getElementById("suggestions-form").reset();
+    suggestionForm.reset();
     suggestionModal.classList.add('hidden');
     suggestionModal.setAttribute('aria-modal', 'false');
     moreQuizBtn.focus();
 }
 
-$(document).ready(function () {
-    $("#suggestions-form").submit(function (e) {
-        e.preventDefault();
-        sendSuggestion();
-    });
-});
 
-function sendSuggestion() {
-    var suggestion = $("#suggestion-text").val();
-
-    $.ajax({
-        type: "POST",
-        url: "php/set_suggestion.php",
-        data: { "suggestion": suggestion },
-        dataType: "json",
-        success: function (response) {
-            if (response.success) {
-                showToast(response.message, "success");
-            } else {
-                showToast("Errore: " + response.message);
-            }
-        },
-        error: function () {
-            showToast("Si è verificato un errore. Riprovare più tardi.");        //ajax error
-        },
-    });
+function showResult(text, result) {
+    result ? showToast(text, 'success') : showResult(text);
     cancelSuggestion();
-}   
+}

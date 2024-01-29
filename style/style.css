@@ -234,6 +234,29 @@ main:has(#error-page-wrapper) {
 
 
 /***********************************************/
+/********* STILE PAGINA IMPOSTAZIONI ***********/
+/***********************************************/
+.settings-title {
+  text-align: center;
+}
+
+form, form label {
+  display: block;
+  text-align: center;
+}
+
+form input {
+  color: white;
+  background-color: var(--back);
+  border-color: var(--primary);
+  border-style: solid;
+  border-radius: 6px;
+  padding: 8px;
+  margin-bottom: 2%;
+}
+
+
+/***********************************************/
 /***************** STILE HEADER  ***************/
 /***********************************************/
 #main-header h1 {
@@ -248,7 +271,7 @@ main:has(#error-page-wrapper) {
 
 #main-nav {
   background-color: var(--back-purple);
-  padding: 1em 3em;
+  padding: 1em 2em;
 }
 
 #main-nav ul {
@@ -268,9 +291,19 @@ main:has(#error-page-wrapper) {
   align-items: center;
 }
 
+#account-nav-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+#account-nav-container #settings {
+  padding-right: 1em;
+}
+
 body#index #main-nav a[href="index.php"],
 body#login #main-nav a[href="login.php"],
-body#signup #main-nav a[href="login.php"] {
+body#signup #main-nav a[href="login.php"],
+body#impostazioni #main-nav a[href="impostazioni.php"] {
   color: var(--secondary);
 }
 
@@ -278,11 +311,12 @@ body#signup #main-nav a[href="login.php"] {
 body#index #main-nav a[href="index.php"] .svg-icon,
 body#login #main-nav a[href="login.php"] .svg-icon,
 body#signup #main-nav a[href="login.php"] .svg-icon,
+body#impostazioni #main-nav a[href="impostazioni.php"] .svg-icon,
 #main-nav a:hover .svg-icon {
   fill: var(--secondary);
 }
 
-#main-nav li:nth-child(2) {
+#main-nav #search-zone {
   width: 50%;
 }
 
@@ -587,28 +621,9 @@ body#signup #main-nav a[href="login.php"] .svg-icon,
   margin-bottom: 1em;
 }
 
-::-webkit-input-placeholder {
-  /* questo code funziona solo per Safari,Chrome,Opera*/
+::placeholder {
   color: var(--secondary);
 }
-
-:-moz-placeholder {
-  /* Mozilla Firefox 4 to 18 */
-  color: var(--secondary);
-
-}
-
-::-moz-placeholder {
-  /* Mozilla Firefox 19+ */
-  color: var(--secondary);
-
-}
-
-:-ms-input-placeholder {
-  /* Internet Explorer 10+ */
-  color: var(--secondary);
-}
-
 
 
 /***********************************************/
@@ -692,7 +707,7 @@ body#signup #main-nav a[href="login.php"] .svg-icon,
 
 .heart-icon {
   fill: var(--inactive);
-  filter: drop-shadow(0px 0px 5px rgb(0 0 0 / 0.4));
+  filter: drop-shadow(0px 0px 5px black);
   height: 30px;
   width: 30px;
 }

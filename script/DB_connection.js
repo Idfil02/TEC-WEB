@@ -48,6 +48,25 @@ export function AjaxRequest(quizID, request, callback, action="") {
 }
 
 
+export function AjaxRequestPost(setting, request, callback) {  
+    var xmlHttp = getXMLHttp();
+    xmlHttp.onreadystatechange = function() {
+        // quando l'operazione è completata
+        if (this.readyState == 4 && this.status == 200) {
+            if(!this.responseText.includes('successo')){
+                callback(this.responseText, false);
+            }
+            else{
+                callback(this.responseText, true);
+            }
+        }
+    };
+    xmlHttp.open("POST","php/set_"+ setting + ".php", true);
+    xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlHttp.send(request);
+}
+
+
 
 /***********************************************/
 /********** GESTIONE MESSAGGIO ERRORE **********/

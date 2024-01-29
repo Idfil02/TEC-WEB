@@ -1,6 +1,8 @@
 import { AjaxRequest, showToast } from './DB_connection.js'
 
 let heartBtns = document.querySelectorAll('input[type="checkbox"].heart');
+let toastMessage = sessionStorage.getItem('toastMessage');
+let toastType = sessionStorage.getItem('toastType');
 
 window.addEventListener('load', addSaved);
 function addSaved() {
@@ -21,6 +23,11 @@ function addSaved() {
                 }
             });
         });
+    }
+    if (toastMessage && toastType) {
+        showToast(toastMessage, toastType);
+        sessionStorage.removeItem('toastMessage');
+        sessionStorage.removeItem('toastType');
     }
 }
 

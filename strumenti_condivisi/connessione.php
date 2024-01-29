@@ -35,7 +35,6 @@ class AccessDB {
         $this->connection->close();
     }
 
-    /* Esecuzione di query che restituiscono valori */
 /* Esecuzione di query che restituiscono valori */
 public function execute_query($query_text, $params = array()) {
     try {
@@ -67,7 +66,6 @@ public function execute_query($query_text, $params = array()) {
 }
 
 
-    /* Esecuzione di query che modificano db */
 /* Esecuzione di query che modificano db */
 public function execute_mod_query($query_text, $params = array()) {
     try {
@@ -90,7 +88,7 @@ public function execute_mod_query($query_text, $params = array()) {
     }
 }
 
-public function getConnection() {
+public function get_connection() {
     return $this->connection;
 }
 

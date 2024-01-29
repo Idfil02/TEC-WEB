@@ -1,7 +1,7 @@
 <?php
 require_once "../strumenti_condivisi/connessione.php";
 
-$response = array();
+$response = "";
 
 if (isset($_POST['suggestion'])) {
     $suggestion = $_POST['suggestion'];
@@ -17,31 +17,26 @@ if (isset($_POST['suggestion'])) {
 
         try {
             // Use a parameterized query to prevent SQL injection
-            $query = 'INSERT INTO Suggerimenti (Utente, Testo) VALUES (:user, :suggestion)';
-            $params = array(':user' => $user, ':suggestion' => $suggestion);
-            
-            $connection->execute_mod_query($query, $params);
+            $connection->execute_mod_query("INSERT INTO Suggerimenti (Utente, Testo) VALUES (?, ?)", [$user, $suggestion]);
 
-            $response['success'] = true;
-            $response['message'] = "Suggerimento inviato con successo.";
-        } catch (PDOException $e) {
+            $response= "Suggerimento inviato con successo.";
+        } 
+        catch (Exception $e) {
             // Log the SQL error for debugging
             error_log("SQL Error: " . $e->getMessage());
 
-            $response['success'] = false;
-            $response['message'] = "Invio del messaggio fallito. Riprova più tardi.";
+            $response = "Invio del messaggio fallito. Riprova più tardi.";
         }
 
         $connection->close_connection();
-    } else {
-        $response['success'] = false;
-        $response['message'] = "Invio del messaggio fallito. Riprova più tardi.";
+    } 
+    else {
+        $response = "Invio del messaggio fallito. Riprova più tardi.";
     }
-} else {
-    $response['success'] = false;
-    $response['message'] = "Inserire un suggerimento valido.";
+} 
+else {
+    $response = "Inserire un suggerimento valido.";
 }
 
-header('Content-Type: application/json');
-echo json_encode($response);
+echo ($response);
 ?>
