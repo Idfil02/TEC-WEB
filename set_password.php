@@ -10,8 +10,8 @@ if (
     isset($_POST['old-password']) &&
     isset($_POST['new-password'])
 ) {
-    $oldPassword = filter_var($_POST['old-password'], FILTER_SANITIZE_STRING);
-    $newPassword = filter_var($_POST['new-password'], FILTER_SANITIZE_STRING);
+    $oldPassword = htmlspecialchars(trim($_POST['old-password']));
+    $newPassword = htmlspecialchars(trim($_POST['new-password']));
 
     $connection = new AccessDB;
 
