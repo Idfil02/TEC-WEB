@@ -1,6 +1,6 @@
 <?php 
 
-require_once "strumenti_condivisi/strumenti.php";       //vedete il vostro path
+require_once "strumenti_condivisi/strumenti.php"
 
 $template = file_get_contents('layout_condivisi/template_layout.html');          
 $main_content = file_get_contents('layout_pagine/login.html');        

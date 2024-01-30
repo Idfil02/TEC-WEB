@@ -48,19 +48,28 @@ rightArrows.forEach(function(btn) {
 function nextCarousel(carouselId) {
     const carousel = document.getElementById(carouselId);
     const currentIndex = parseInt(carousel.dataset.currentIndex) || 1;
-    const newIndex = (currentIndex + 1) % (carousel.children.length - 3); // aggiustato per visualizzare 4 blocchi contemporaneamente
+    const newIndex = (currentIndex + 1) % (carousel.children.length);
     updateCarousel(carousel, newIndex);
+}
+
+function getNumChildren() {
+    let width = screen.width;
+    if(width<=580){
+        return 2;
+    }else {
+        return 4;
+    }
 }
 
 function prevCarousel(carouselId) {
     const carousel = document.getElementById(carouselId);
     const currentIndex = parseInt(carousel.dataset.currentIndex) || 1;
-    const newIndex = (currentIndex - 1 + carousel.children.length - 3) % (carousel.children.length - 3); 
+    const newIndex = (currentIndex - 1);
     updateCarousel(carousel, newIndex);
 }
 
 function updateCarousel(carousel, newIndex) {
-    const translateValue = -newIndex * (25 + .7); // Larghezza blocco + spazio tra i blocchi
+    const translateValue = -newIndex * (100/getNumChildren() + .7); // Larghezza blocco + spazio tra i blocchi
     carousel.style.transform = `translateX(${translateValue}%)`;
     carousel.dataset.currentIndex = newIndex;
 }
@@ -95,7 +104,6 @@ function save(save, btn) {           //se save==true salvo il quiz altrimenti lo
 
     }
 }
-
 
 
 function updateHearts(response, id) {

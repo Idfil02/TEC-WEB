@@ -19,63 +19,71 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = trim($password);
     $password = htmlspecialchars($password, ENT_QUOTES, 'UTF-8');
 
-    // Connessione al database
-    $dbConnection = new AccessDB();
-    $dbConnected = $dbConnection->open_connection();
-
-    if (!$dbConnected) {
-        $response = "Errore di connessione al database.";
+    if(strlen($username)<3 || strlen($username)>20){
+        $response = "Username invalido. L'username deve contenere almeno 3 e al massimo 20 caratteri.";
+    }
+    else if (strlen($password) < 4){
+        $response = "Password invalida. Si prega di fornire password con almeno 4 caratteri.";
     }
     else {
-        // Caso registrazione
-        if (isset($_POST["email"]) and $_POST["email"]!="") {
-            $email = $_POST["email"];
+        // Connessione al database
+        $dbConnection = new AccessDB();
+        $dbConnected = $dbConnection->open_connection();
 
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $response = "Email non valida";
-            }
-            else {
-                // Hashing della password prima di salvarla nel database
-                $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        if (!$dbConnected) {
+            $response = "Errore di connessione al database.";
+        }
+        else {
+            // Caso registrazione
+            if (isset($_POST["email"]) and $_POST["email"]!="") {
+                $email = $_POST["email"];
 
-                // Verifica se username esiste già nel database
-                $existingUser = $dbConnection->execute_query("SELECT * FROM Utenti WHERE Username = ?", [$username]);
-
-                if ($existingUser) {
-                    $response = "Username già in uso.";
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    $response = "Email non valida";
                 }
                 else {
-                    // Salva l'utente nel database
-                    $query_res = $dbConnection->execute_mod_query("INSERT INTO Utenti (Email, Username, password) VALUES (?, ?, ?)", [$email, $username, $hashedPassword]);
-                    
-                    if($query_res){
-                        // Ottieni l'ID appena inserito
-                        $ID = $dbConnection->get_connection()->insert_id;  // Access the insert_id property of the MySQLi connection
-                        $response = "Registrazione completata con successo!";
-                        saveID($ID);
+                    // Hashing della password prima di salvarla nel database
+                    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+                    // Verifica se username esiste già nel database
+                    $existingUser = $dbConnection->execute_query("SELECT * FROM Utenti WHERE Username = ?", [$username]);
+
+                    if ($existingUser) {
+                        $response = "Username già in uso.";
                     }
                     else {
-                        $response = "Si è verificato un problema con il server. Riprovare più tardi.";
+                        // Salva l'utente nel database
+                        $query_res = $dbConnection->execute_mod_query("INSERT INTO Utenti (Email, Username, password) VALUES (?, ?, ?)", [$email, $username, $hashedPassword]);
+                        
+                        if($query_res){
+                            // Ottieni l'ID appena inserito
+                            $ID = $dbConnection->get_connection()->insert_id;  // Access the insert_id property of the MySQLi connection
+                            $response = "Registrazione completata con successo!";
+                            saveID($ID);
+                        }
+                        else {
+                            $response = "Si è verificato un problema con il server. Riprovare più tardi.";
+                        }
                     }
                 }
-            }
-        } 
-        // Caso login
-        else {       
-            // verifica delle credenziali
-            $user = $dbConnection->execute_query("SELECT * FROM Utenti WHERE Username = ?", [$username]);
-
-            if ($user && password_verify($password, $user[0]['Password'])) {
-                $response = "Login effettuato con successo!";
-                saveID($user[0]['ID']);
             } 
-            else {
-                $response = "Username o password non valide.";
+            // Caso login
+            else {       
+                // verifica delle credenziali
+                $user = $dbConnection->execute_query("SELECT * FROM Utenti WHERE Username = ?", [$username]);
+
+                if ($user && password_verify($password, $user[0]['Password'])) {
+                    $response = "Login effettuato con successo!";
+                    saveID($user[0]['ID']);
+                } 
+                else {
+                    $response = "Username o password non valide.";
+                }
             }
         }
+        // Chiudi la connessione al database
+        $dbConnection->close_connection();
     }
-    // Chiudi la connessione al database
-    $dbConnection->close_connection();
 }
 else {
     $response = "Operazione non riuscita. Si prega di riprovare più tardi.";

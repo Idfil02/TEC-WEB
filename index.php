@@ -48,8 +48,6 @@
 
 
     function buildHome($html, $quizData, $savedQuizzes) {
-        // MANCA TUTTO CONTROLLO ERRORI     !!!!!!!!!!
-
         $quiz_box_temp = file_get_contents('layout_pagine/quiz_box.html');
 
         $quiz_saved = "";
