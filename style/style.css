@@ -514,24 +514,25 @@ body#impostazioni #main-nav a[href="impostazioni.php"] .svg-icon,
   margin: 0%;
 }
 
-#home-wrapper .title {
-  font-size: .9em;
+#home-wrapper .title-box .title {
+  line-height: 1.3em;
+  /* margin-bottom: 1%; */
+  font-size: .7em;
   width: 100%;
-  display: flex;
+  /* display: flex; */
   position: absolute;
   color: var(--primary);
   display: -webkit-box;
   -webkit-line-clamp: 3;
-  /*numero massimo di righe */
   -webkit-box-orient: vertical;
   word-wrap: break-word;
-  white-space: nowrap;
+  /*white-space: break-spaces;*/
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: normal;
+  /* white-space: normal; */
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 800px) {
   #home-wrapper .title {
     font-size: .6em; /* Riduzione della dimensione del testo per schermi più piccoli */
   }

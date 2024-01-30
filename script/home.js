@@ -60,7 +60,7 @@ function prevCarousel(carouselId) {
 }
 
 function updateCarousel(carousel, newIndex) {
-    const translateValue = -newIndex * (25 + .5); // Larghezza blocco + spazio tra i blocchi
+    const translateValue = -newIndex * (25 + .7); // Larghezza blocco + spazio tra i blocchi
     carousel.style.transform = `translateX(${translateValue}%)`;
     carousel.dataset.currentIndex = newIndex;
 }
