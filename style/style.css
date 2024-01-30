@@ -552,6 +552,25 @@ body#impostazioni #main-nav a[href="impostazioni.php"] .svg-icon,
   }
 }
 
+@media screen and (max-height: 920px) {
+  #home-wrapper .title {
+    font-size: .6em; /* Riduzione della dimensione del testo per schermi più piccoli */
+  }
+}
+
+@media screen and (max-height: 550px) {
+  #home-wrapper .title {
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+  /*white-space: break-spaces;*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: .9em;
+    font-size: .5em; /* Riduzione della dimensione del testo per schermi più piccoli */
+  }
+}
+
 #home-wrapper .time {
   color: var(--secondary);
   position: absolute;
@@ -567,6 +586,13 @@ body#impostazioni #main-nav a[href="impostazioni.php"] .svg-icon,
 @media screen and (max-width: 700px) {
   #home-wrapper .time {
     font-size: .7em; /* Riduzione della dimensione del testo per schermi più piccoli */
+  }
+}
+
+@media screen and (max-height: 500px) {
+  #home-wrapper #time {
+    top: 10%;
+    font-size: .6em; /* Riduzione della dimensione del testo per schermi più piccoli */
   }
 }
 
