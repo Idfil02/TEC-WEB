@@ -1,7 +1,7 @@
 <h2 class="settings-title">Impostazioni</h2>
 <div class="tabella-cambio">
   <h3 class="settings-title">Cambia nome utente</h3>
-  <form id="changeUsernameForm" method="POST" action="php/re_set_user.php">
+  <form id="changeUsernameForm" method="POST" action="php/change_username.php">
     <label for="new-name">Nuovo nome utente</label>
     <input
       type="text"
@@ -17,12 +17,13 @@
 <br />
 <div class="tabella-cambio">
   <h3 class="settings-title">Cambia password</h3>
-  <form id="changePasswordForm" method="POST" action="php/set_password.php">
+  <form id="changePasswordForm" method="POST" action="php/change_password.php">
     <label for="old-password">Vecchia password</label>
     <input
       type="password"
       id="old-password"
       name="old-password"
+      minlength="4"
       required
       placeholder="Vecchia Password"
     />
@@ -31,6 +32,7 @@
       type="password"
       id="new-password"
       name="new-password"
+      minlength="4"
       required
       placeholder="Nuova Paswword"
     />
@@ -42,7 +44,7 @@
 <form id="deleteAccountForm" method="post" action="php/delete_account.php">
   <h2 id="delete-account-title" class="settings-title">Elimina Account PERMANENTEMENTE</h2>
 
-  <label for="username">Username:</label>
+  <label for="username">Reinserisci username:</label>
   <input
     type="text"
     id="username"
@@ -53,14 +55,14 @@
     maxlength="20"
   />
 
-  <label for="password">Password:</label>
+  <label for="password">Reinserisci password:</label>
   <input
     type="password"
     id="password"
     name="password"
     required
     placeholder="Password"
-    minlength="6"
+    minlength="4"
   />
   <br />
   <input
@@ -71,4 +73,4 @@
   />
 </form>
 
-<script src="script/messages.js"></script>
+<script type="module" src="script/changes_messages.js"></script>

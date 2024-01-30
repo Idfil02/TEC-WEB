@@ -19,5 +19,5 @@ function checkIsLogged() {
                 logIcon.setAttribute("href", "login.php");
             }
         })
-        .catch(error => console.error('Errore nel check stato log:', error));
+        .catch(error => showToast('Si è verificato un problema nella connessione al database. Si prega di riprovare più tardi.'));
 }
