@@ -18,7 +18,7 @@ function addSaved() {
                 if (response==1) {
                     document.querySelectorAll("#salva-" + id).forEach(function (btn) {
                         btn.checked = true;
-                        btn.setAttribute('aria-label', 'Non mi piace');
+                        btn.setAttribute('aria-pressed', true);
                     });
                 }
             });
@@ -68,6 +68,8 @@ function updateCarousel(carousel, newIndex) {
 
 heartBtns.forEach(function(btn) {
     btn.addEventListener('change', function(event) {
+        console.log(btn.checked);
+        btn.setAttribute('aria-pressed', btn.checked);
         (event.target.checked) ? save(true, this) : save(false, this);
     });
 });
@@ -80,7 +82,7 @@ function save(save, btn) {           //se save==true salvo il quiz altrimenti lo
         console.log("test bottone like");   
 
         // Aggiungo un like al numero di cuori + salvo nel db
-        AjaxRequest(id, 'likes', function(response){ updateHearts(response, id, 'Non mi piace'); }, '+1');
+        AjaxRequest(id, 'likes', function(response){ updateHearts(response, id); }, '+1');
     }
     else {
         console.log("test bottone unlike");
@@ -90,7 +92,7 @@ function save(save, btn) {           //se save==true salvo il quiz altrimenti lo
             document.querySelectorAll("#salva-" + id).forEach(function (btn) {
                 btn.checked = false;
             }); 
-            updateHearts(response, id, 'Mi piace'); }, '-1');
+            updateHearts(response, id); }, '-1');
 
     }
 }
@@ -98,18 +100,11 @@ function save(save, btn) {           //se save==true salvo il quiz altrimenti lo
 
 
 function updateHearts(response, id, ariaLabel) {
-    // Se loggato
-    if(response != '-1'){
-        document.querySelectorAll("#salva-" + id).forEach(function (btn) {
-            btn.setAttribute('aria-label', ariaLabel);
-        });
-    }
     // Se non loggato
-    else {
+    if(response == '-1'){
         // Tolgo check
         document.querySelectorAll("#salva-" + id).forEach(function (btn) {
             btn.checked = false;
-            btn.setAttribute('aria-label', 'Mi piace');
         });
         showToast("Attenzione non sei loggato. È necessario essere autenticati per salvare il quiz.");
     }

@@ -1,6 +1,6 @@
 <div class="quiz-header">
     <div class="quiz-image" style="background-image: url('[quiz-img]');">
-        <input type="checkbox" id="salva-[quizID]" class="heart" aria-label="Mi piace" role="button">           
+        <input type="checkbox" id="salva-[quizID]" class="heart" aria-label="Mi piace" role="button" aria-pressed="false">           
         <label for="salva-[quizID]">
             <svg class="svg-icon heart-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
                 <path d="M50,25 C35,0,-14,25,20,60 L50,90 L80,60 C114,20,65,0,50,25"></path>
@@ -8,13 +8,13 @@
         </label>
     </div>
     <div>
-        <h2 id="quiz-name">[quiz-title]</h2>
+        <h2 class="quiz-name">[quiz-title]</h2>
         <div class="tags">
-            <a href="pagina_di_ricerca.php?search=[quiz-category]" id="quiz-category" class="tag" aria-label="Vai alla pagina [quiz-category]">[quiz-category]</a>
-            <span class="tag" id="quiz-time">[quiz-time] minuti</span>
-            <span class="tag" id="quiz-players">[quiz-tot-played] giocate</span>
-            <span class="tag" id="quiz-likes">[quiz-tot-saved] cuori</span>
+            <a href="pagina_di_ricerca.php?search=[quiz-category]" class="quiz-category tag" aria-label="Vai alla pagina [quiz-category]">[quiz-category]</a>
+            <span class="tag quiz-time">[quiz-time] minuti</span>
+            <span class="tag quiz-players">[quiz-tot-played] giocate</span>
+            <span class="tag quiz-likes">[quiz-tot-saved] cuori</span>
         </div>
-        <p id="quiz-description">[quiz-description]</p>
+        <p class="quiz-description">[quiz-description]</p>
     </div>
 </div>

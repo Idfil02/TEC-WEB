@@ -10,7 +10,7 @@ const questionsNav = document.getElementById('questions-nav');
 const timerContainer = document.getElementById('time-value')
 const answerBtns = document.querySelectorAll('#answers-box .text-button');
 const wrongAnswerContainer = document.getElementById('wrong-answers-box');
-const likesCounter = document.getElementById('quiz-likes'); 
+const likesCounter = document.querySelector('.quiz-likes'); 
 
 let numQuestions = document.getElementById('tot-questions').textContent.replace("/", "").trim();
 let lastQuestionBtn = null;     //ultimo bottone di questions-nav premuto
@@ -23,7 +23,10 @@ let quizID;
 /******* ASSOCIAZIONE BOTTONI - FUNZIONI *******/
 /***********************************************/
 const heartBtn = document.querySelector('input[type="checkbox"].heart');
-heartBtn.addEventListener('change', function(event) {(event.target.checked) ? saveQuiz(true) : saveQuiz(false)});
+heartBtn.addEventListener('change', function(event) {
+    heartBtn.setAttribute('aria-pressed', heartBtn.checked);
+    (event.target.checked) ? saveQuiz(true) : saveQuiz(false);
+});
 
 const startBtn = document.getElementById('play-button');
 startBtn.addEventListener('click', startQuiz);
@@ -67,28 +70,26 @@ function saveQuiz(save, quiz = quizID) {           //se save==true salvo il quiz
         console.log("test bottone like");   
 
         // Aggiungo un like al numero di cuori + salvo nel db
-        AjaxRequest(quiz, 'likes', function(response){ updateHearts(response, 'Non mi piace') }, '+1');
+        AjaxRequest(quiz, 'likes', function(response){ updateHearts(response) }, '+1');
     }
     else {
         console.log("test bottone unlike");
 
         // Tolgo un like al numero di cuori + salvo nel db
-        AjaxRequest(quiz, 'likes', function(response){ updateHearts(response, 'Mi piace') }, '-1');
+        AjaxRequest(quiz, 'likes', function(response){ updateHearts(response) }, '-1');
     }
 }
 
 
-function updateHearts(response, ariaLabel) {
+function updateHearts(response) {
     // Se loggato
     if(response != '-1'){
         likesCounter.innerHTML = response + " cuori";
-        heartBtn.setAttribute('aria-label', ariaLabel);
     }
     // Se non loggato
     else {
         // Tolgo check
         heartBtn.checked = false;
-        heartBtn.setAttribute('aria-label', 'Mi piace');
         showToast("Attenzione non sei loggato. È necessario essere autenticati per salvare il quiz.");
     }
 }
@@ -216,7 +217,7 @@ function endQuiz() {
 
     // Aumentare counter giocate 
     AjaxRequest(quizID, 'players', function(response){ 
-        document.getElementById('quiz-players').innerHTML = response + " giocate";
+        document.querySelector('.quiz-players').innerHTML = response + " giocate";
     });
 }
 
@@ -467,7 +468,7 @@ function pageInit() {
     AjaxRequest(quizID, 'user_like', function(response){
         if (response==1) {
             heartBtn.checked = true;
-            heartBtn.setAttribute('aria-label', 'Non mi piace');
+            heartBtn.setAttribute('aria-pressed', true);
         }
     });
 

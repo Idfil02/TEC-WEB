@@ -278,14 +278,17 @@ form input {
 }
 
 #main-nav ul {
-  margin: auto;
+  margin: 0px;
   list-style: none;
+  background-color: var(--back-purple);
+  padding: 0;
+}
+
+#main-nav #outer-nav-container {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  background-color: var(--back-purple);
-  padding: 0;
 }
 
 #main-nav a {
@@ -549,7 +552,7 @@ body#impostazioni #main-nav a[href="impostazioni.php"] .svg-icon,
   }
 }
 
-#home-wrapper #time {
+#home-wrapper .time {
   color: var(--secondary);
   position: absolute;
   margin-top: 0%;
@@ -562,7 +565,7 @@ body#impostazioni #main-nav a[href="impostazioni.php"] .svg-icon,
 }
 
 @media screen and (max-width: 700px) {
-  #home-wrapper #time {
+  #home-wrapper .time {
     font-size: .7em; /* Riduzione della dimensione del testo per schermi più piccoli */
   }
 }
