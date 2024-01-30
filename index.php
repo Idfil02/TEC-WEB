@@ -84,7 +84,7 @@
 
                 // Controllo se quiz salvato
                 if(in_array($quiz_i['ID'], $savedQuizzes)){
-                    $quiz_saved .= $quiz_i_box;
+                    $quiz_saved .= str_replace("salva-" . $quiz_i['ID'], "salva-".$quiz_i['ID']."-saved", $quiz_i_box, );
                 }
             }
 

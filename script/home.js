@@ -13,10 +13,10 @@ function addSaved() {
 
         //Check di tutti i quiz salvati
         heartBtns.forEach(function(btn) {
-            const id = btn.id.replace("salva-", "");
+            const id = btn.id.match(/^salva-(\d+)/)[1];
             AjaxRequest(id, 'user_like', function(response){
                 if (response==1) {
-                    document.querySelectorAll("#salva-" + id).forEach(function (btn) {
+                    document.querySelectorAll('[id^="salva-'+id+'"]').forEach(function (btn) {
                         btn.checked = true;
                         btn.setAttribute('aria-pressed', true);
                     });
@@ -76,7 +76,7 @@ heartBtns.forEach(function(btn) {
 
 
 function save(save, btn) {           //se save==true salvo il quiz altrimenti lo tolgo
-    let id = btn.id.replace("salva-", "");
+    let id = btn.id.match(/^salva-(\d+)/)[1];
 
     if (save==true){
         console.log("test bottone like");   
@@ -87,9 +87,8 @@ function save(save, btn) {           //se save==true salvo il quiz altrimenti lo
     else {
         console.log("test bottone unlike");
 
-        // Tolgo un like al numero di cuori + salvo nel db
         AjaxRequest(id, 'likes', function(response){ 
-            document.querySelectorAll("#salva-" + id).forEach(function (btn) {
+            document.querySelectorAll('[id^="salva-'+id+'"]').forEach(function (btn) {
                 btn.checked = false;
             }); 
             updateHearts(response, id); }, '-1');
@@ -99,11 +98,11 @@ function save(save, btn) {           //se save==true salvo il quiz altrimenti lo
 
 
 
-function updateHearts(response, id, ariaLabel) {
+function updateHearts(response, id) {
     // Se non loggato
     if(response == '-1'){
         // Tolgo check
-        document.querySelectorAll("#salva-" + id).forEach(function (btn) {
+        document.querySelectorAll('[id^="salva-'+id+'"]').forEach(function (btn) {
             btn.checked = false;
         });
         showToast("Attenzione non sei loggato. È necessario essere autenticati per salvare il quiz.");
