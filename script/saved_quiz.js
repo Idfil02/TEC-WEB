@@ -1,11 +1,12 @@
 import { showToast, AjaxRequest } from "./DB_connection.js";
 
 let heartBtns = document.querySelectorAll('input[type="checkbox"].heart');
+let isLogged = sessionStorage.getItem('log');
 
 window.addEventListener('load', addSaved);
 function addSaved() {
     // Se utente loggato
-    if(checkIsLogged) {
+    if(isLogged=='1') {
 
         //Check di tutti i quiz salvati
         heartBtns.forEach(function(btn) {

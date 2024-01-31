@@ -6,8 +6,10 @@ let toastType = sessionStorage.getItem('toastType');
 
 window.addEventListener('load', addSaved);
 function addSaved() {
+    let isLogged = sessionStorage.getItem('log');
+
     // Se utente loggato
-    if(checkIsLogged) {
+    if(isLogged=='1') {
         // Mostro preferiti
         document.getElementById("saved-quiz").classList.remove("hidden");
 
@@ -24,6 +26,10 @@ function addSaved() {
             });
         });
     }
+    else {
+        document.getElementById("saved-quiz").classList.add("hidden");
+    }
+
     if (toastMessage && toastType) {
         showToast(toastMessage, toastType);
         sessionStorage.removeItem('toastMessage');

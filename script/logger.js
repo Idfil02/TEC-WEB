@@ -16,6 +16,7 @@ function showResult(text, result) {
         authForm.reset();
         sessionStorage.setItem('toastMessage', text);
         sessionStorage.setItem('toastType', 'success');
+        sessionStorage.setItem("log", 1);
         window.location.href = "index.php";
     }
     else {
