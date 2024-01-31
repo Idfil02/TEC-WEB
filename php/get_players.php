@@ -7,14 +7,14 @@
 
     if ($connection->open_connection()) {
         // Cerco numero di giocatori
-        $query_res = $connection->execute_query("SELECT Num_Giocate FROM Quiz WHERE ID='" . $_GET['quizID'] . "'");  
+        $query_res = $connection->execute_query("SELECT Num_Giocate FROM quiz WHERE ID='" . $_GET['quizID'] . "'");  
 
         if(is_array($query_res)) {
             $n_players = $query_res[0]['Num_Giocate'];
             $n_players++;
 
             // Faccio azione di modifica giocate
-            if($connection->execute_mod_query("UPDATE Quiz SET Num_Giocate=" . $n_players . " WHERE ID=" . $_GET['quizID'])){
+            if($connection->execute_mod_query("UPDATE quiz SET Num_Giocate=" . $n_players . " WHERE ID=" . $_GET['quizID'])){
                 echo $n_players;
             }
             else {

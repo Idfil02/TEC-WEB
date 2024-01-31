@@ -17,7 +17,7 @@ if (isset($_SESSION['user_id']) && isset($_POST['new-name'])) {
 
         if ($connection->open_connection()) {
             // Use prepared statement to update the username in the database
-            $stmt = $connection->get_connection()->prepare("UPDATE Utenti SET Username = ? WHERE ID = ?");
+            $stmt = $connection->get_connection()->prepare("UPDATE utenti SET Username = ? WHERE ID = ?");
             $stmt->bind_param("si", $newUsername, $_SESSION['user_id']);
 
             // Execute the statement

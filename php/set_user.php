@@ -46,14 +46,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
                     // Verifica se username esiste già nel database
-                    $existingUser = $dbConnection->execute_query("SELECT * FROM Utenti WHERE Username = ?", [$username]);
+                    $existingUser = $dbConnection->execute_query("SELECT * FROM utenti WHERE Username = ?", [$username]);
 
-                    if ($existingUser) {
+                    if (is_array($existingUser) and !empty($existingUser)) {
                         $response = "Username già in uso.";
                     }
                     else {
                         // Salva l'utente nel database
-                        $query_res = $dbConnection->execute_mod_query("INSERT INTO Utenti (Email, Username, password) VALUES (?, ?, ?)", [$email, $username, $hashedPassword]);
+                        $query_res = $dbConnection->execute_mod_query("INSERT INTO utenti (Email, Username, password) VALUES (?, ?, ?)", [$email, $username, $hashedPassword]);
                         
                         if($query_res){
                             // Ottieni l'ID appena inserito
@@ -70,9 +70,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Caso login
             else {       
                 // verifica delle credenziali
-                $user = $dbConnection->execute_query("SELECT * FROM Utenti WHERE Username = ?", [$username]);
+                $user = $dbConnection->execute_query("SELECT * FROM utenti WHERE Username = ?", [$username]);
 
-                if ($user && password_verify($password, $user[0]['Password'])) {
+                if (is_array($user) && !empty($user) && password_verify($password, $user[0]['Password'])) {
                     $response = "Login effettuato con successo!";
                     saveID($user[0]['ID']);
                 } 

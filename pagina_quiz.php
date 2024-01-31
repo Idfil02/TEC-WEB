@@ -33,11 +33,11 @@
    
     if(isset($_GET['quizID'])){
         if ($connection->open_connection()) {
-            $quizInfo = $connection->execute_query("SELECT * FROM Quiz WHERE ID='". $_GET['quizID'] ."'");  
+            $quizInfo = $connection->execute_query("SELECT * FROM quiz WHERE ID='". $_GET['quizID'] ."'");  
             $connection->close_connection();
     
             // Quiz selezionato esiste
-            if(isset($quizInfo[0])){
+            if(is_array($quizInfo)){
                 $quizInfo = $quizInfo[0];
                 $title = $quizInfo['Nome'] . " quiz";         //titolo della pagina      
                 $pageID = "pagina_quiz";           //id della pagina

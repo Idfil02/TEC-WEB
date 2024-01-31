@@ -16,7 +16,7 @@ if (
 
     if ($connection->open_connection()) {
         // Use prepared statement to retrieve the user ID and hashed password
-        $stmt = $connection->get_connection()->prepare("SELECT ID, Password FROM Utenti WHERE Username = ?");
+        $stmt = $connection->get_connection()->prepare("SELECT ID, Password FROM utenti WHERE Username = ?");
         $stmt->bind_param("s", $username);
         
         if($stmt->execute()) {
@@ -30,7 +30,7 @@ if (
             // Verify the password
             if (password_verify($password, $hashedPassword)) {
                 // Use prepared statement to delete the user from the database
-                $stmt = $connection->get_connection()->prepare("DELETE FROM Utenti WHERE ID = ?");
+                $stmt = $connection->get_connection()->prepare("DELETE FROM utenti WHERE ID = ?");
                 $stmt->bind_param("i", $userID);
                 
                 if($stmt->execute()) {

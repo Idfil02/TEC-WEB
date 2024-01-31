@@ -17,7 +17,7 @@ if (isset($_POST['suggestion'])) {
 
         try {
             // Use a parameterized query to prevent SQL injection
-            $connection->execute_mod_query("INSERT INTO Suggerimenti (Utente, Testo) VALUES (?, ?)", [$user, $suggestion]);
+            $connection->execute_mod_query("INSERT INTO suggerimenti (Utente, Testo) VALUES (?, ?)", [$user, $suggestion]);
 
             $response= "Suggerimento inviato con successo.";
         } 

@@ -10,7 +10,7 @@
 
     if ($connection->open_connection()) {
 
-        $searchResults = $connection->execute_query("SELECT * FROM Quiz WHERE Nome LIKE '%$search%' OR Descrizione LIKE '%$search%' OR Categoria LIKE '%$search%'");  
+        $searchResults = $connection->execute_query("SELECT * FROM quiz WHERE Nome LIKE '%$search%' OR Descrizione LIKE '%$search%' OR Categoria LIKE '%$search%'");  
         $connection->close_connection();
 
         if(!is_string($searchResults)){

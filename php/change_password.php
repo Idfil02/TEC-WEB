@@ -21,7 +21,7 @@ if (
 
         if ($connection->open_connection()) {
             // Use prepared statement to retrieve the current hashed password
-            $stmt = $connection->get_connection()->prepare("SELECT Password FROM Utenti WHERE ID = ?");
+            $stmt = $connection->get_connection()->prepare("SELECT Password FROM utenti WHERE ID = ?");
             $stmt->bind_param("i", $_SESSION['user_id']);
             
             if($stmt->execute()) {
@@ -37,7 +37,7 @@ if (
                     $newPasswordHash = password_hash($newPassword, PASSWORD_DEFAULT);
 
                     // Use prepared statement to update the password in the database
-                    $stmt = $connection->get_connection()->prepare("UPDATE Utenti SET Password = ? WHERE ID = ?");
+                    $stmt = $connection->get_connection()->prepare("UPDATE utenti SET Password = ? WHERE ID = ?");
                     $stmt->bind_param("si", $newPasswordHash, $_SESSION['user_id']);
                     if($stmt->execute()) {
                         $response['success'] = true;

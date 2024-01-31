@@ -9,10 +9,10 @@
     $connection = new AccessDB;
 
     if ($connection->open_connection()) {
-        $quizzes = $connection->execute_query("SELECT ID, Nome, Categoria, Tempo, Url_Immagine FROM Quiz");  
+        $quizzes = $connection->execute_query("SELECT ID, Nome, Categoria, Tempo, Url_Immagine FROM quiz");  
         session_start();
         if(isset($_SESSION['user_id'])){
-            $query_res_saved = $connection->execute_query("SELECT Quiz FROM Salvati WHERE Utente='" . $_SESSION['user_id'] . "'"); 
+            $query_res_saved = $connection->execute_query("SELECT Quiz FROM salvati WHERE Utente='" . $_SESSION['user_id'] . "'"); 
             $saved_quizzes = array_map(function($item) {
                 return $item['Quiz'];
             }, $query_res_saved);
@@ -22,7 +22,7 @@
         }
         $connection->close_connection();
 
-        if(isset($quizzes[0]) and is_array($saved_quizzes)){
+        if(is_array($quizzes) and is_array($saved_quizzes)){
             $title = "QuackWiz";         //titolo della pagina
             $pageID = "index";           //id della pagina
             $keywords = "quiz, gioco, cultura, divertimento, apprendimento";        //parole chiave per SEO
